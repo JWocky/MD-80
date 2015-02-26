@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+
+
+<PropertyList>
+
+<autobrakes>
+  <armed type="int">0</armed>
+  <deployed type="int">0</deployed>
+</autobrakes>
+
+<apu>
+  <state float="int">0.66</state>
+  <running type="int">0</running>
+  <air type="int">0</air>
+  <rpm type="float">0</rpm>
+  <egt type="float">0</egt>
+  <out-of-fuel type="bool">false</out-of-fuel>
+</apu>
+
+<fuel>
+	<tank n="0">
+		<name>Left</name>
+		<fuel-press type="int">0</fuel-press>
+	</tank>
+	<tank n="1">
+		<name>Right</name>
+		<fuel-press type="int">0</fuel-press>
+	</tank>
+	<tank n="2">
+		<name>Center</name>
+		<fuel-press type="int">0</fuel-press>
+	</tank>
+	<tank n="3">
+		<name>Aux Fwd</name>
+		<fuel-press type="int">0</fuel-press>
+	</tank>
+	<tank n="4">
+		<name>Aux Bwd</name>
+		<fuel-press type="int">0</fuel-press>
+	</tank>
+</fuel>
+
+<!-- Generic minimum not-running engine rotation speeds -->
+<engines>
+  <n1-windmill type="float">0</n1-windmill>
+  <n2-windmill type="float">0</n2-windmill>
+</engines>
+
+<pneumatic>
+  <psi type="float">0</psi>
+  <source n="0">
+    <name>eng1</name>
+    <pressure type="int">35</pressure>
+  </source>
+  <source n="1">
+    <name>eng2</name>
+    <pressure type="int">35</pressure>
+  </source>
+  <source n="2">
+    <name>apu</name>
+    <pressure type="int">35</pressure>
+  </source>
+</pneumatic>
+
+<electrical>
+  <bus-dc>
+    <volts type="float">28</volts>	<!-- initialize to good volts or lights over MP will fail for others -->
+    <amps type="float">0</amps>
+  </bus-dc>
+  <bus-ac>
+    <volts type="float">115</volts>	<!-- initialize to good volts or lights over MP will fail for others -->
+    <amps type="float">0</amps>
+  </bus-ac>
+
+  <power-source n="0">
+    <name>gen1</name>
+    <flow type="string">ac</flow>
+    <volts type="float">115</volts>
+    <amps type="float">0</amps>
+    <on type="int">0</on>
+  </power-source>
+  <power-source n="1">
+    <name>gen2</name>
+    <flow type="string">ac</flow>
+    <volts type="float">115</volts>
+    <amps type="float">0</amps>
+    <on type="int">0</on>
+  </power-source>
+  <power-source n="2">
+    <name>apu</name>
+    <flow type="string">ac</flow>
+    <volts type="float">115</volts>
+    <amps type="float">0</amps>
+    <on type="int">0</on>
+  </power-source>
+  <power-source n="3">
+    <name>battery</name>
+    <flow type="string">dc</flow>
+    <volts type="float">28</volts>
+    <amps type="float">0</amps>
+    <on type="int">0</on>
+  </power-source>
+  <power-source n="4">
+    <name>ground service</name>
+    <flow type="string">ac</flow>
+    <volts type="float">115</volts>
+    <amps type="float">0</amps>
+    <on type="int">0</on>
+  </power-source>
+  <power-source n="5">
+    <name>rectifier1</name>
+    <flow type="string">dc</flow>
+    <volts type="float">28</volts>
+    <amps type="float">0</amps>
+    <on type="int">0</on>
+  </power-source>
+  <power-source n="6">
+    <name>rectifier2</name>
+    <flow type="string">dc</flow>
+    <volts type="float">28</volts>
+    <amps type="float">0</amps>
+    <on type="int">0</on>
+  </power-source>
+
+  <test-volts-dc type="float">0</test-volts-dc>
+  <test-volts-ac type="float">0</test-volts-ac>
+</electrical>
+
+</PropertyList>
+

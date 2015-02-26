@@ -1,0 +1,527 @@
+<?xml version="1.0"?>
+
+<!--
+McDonnell Douglas MD-81
+Gary R. Neely 'Buckaroo', Nov 2010
+-->
+
+
+<PropertyList>
+
+<path>mesh_overhead.ac</path>
+
+
+<!-- Sub-Model Imports -->
+
+<model>
+  <name>AnnunciatorPanel</name>
+  <path>Aircraft/MD-80/Models/Instruments/annunciators.xml</path>
+</model>
+
+
+<!-- Special Groups and Shaders -->
+
+<animation>
+  <type>noshadow</type>
+  <object-name>QuadAPU</object-name>
+  <object-name>QuadEng</object-name>
+  <object-name>QuadAPUstuff</object-name>
+  <object-name>SwAPU_Master</object-name>
+  <object-name>SwAPU_Air</object-name>
+  <object-name>SwBatt</object-name>
+  <object-name>SwAPU_FC</object-name>
+  <object-name>SwAPU_FA1</object-name>
+  <object-name>SwAPU_FA2</object-name>
+  <object-name>SwIgn</object-name>
+  <object-name>SwStartPump</object-name>
+  <object-name>SwFuelHeatL</object-name>
+  <object-name>SwFuelHeatR</object-name>
+  <object-name>SwEngStartL</object-name>
+  <object-name>SwEngStartR</object-name>
+  <object-name>SwPumpLaft</object-name>
+  <object-name>SwPumpCaft</object-name>
+  <object-name>SwPumpRaft</object-name>
+  <object-name>SwPumpLfwd</object-name>
+  <object-name>SwPumpCfwd</object-name>
+  <object-name>SwPumpRfwd</object-name>
+</animation>
+
+
+<!-- Overhead Panels -->
+
+<animation>
+  <type>material</type>
+  <object-name>QuadAPU</object-name>
+  <object-name>QuadEng</object-name>
+  <emission>
+    <red>0.4</red>
+    <green>0.2</green>
+    <blue>0.1</blue>
+    <factor-prop>/controls/lighting/panel-norm</factor-prop>
+  </emission>
+</animation>
+
+<!-- APU Switches -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwAPU_Master</object-name>
+  <property>controls/switches/apu-master</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>25</dep></entry>
+    <entry><ind>2</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.859</x-m>
+    <y-m>0</y-m>
+    <z-m>1.566</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwAPU_Master</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/controls/switches/apu-master</property>
+      <step>1</step>
+      <min>0</min>
+      <max>2</max>
+      <wrap>false</wrap>
+    </binding>
+    <binding> 
+      <command>nasal</command>
+      <script>MD83.apu_switch();</script>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwAPU_Master</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/controls/switches/apu-master</property>
+      <step>-1</step>
+      <min>0</min>
+      <max>2</max>
+      <wrap>false</wrap>
+    </binding>
+    <binding> 
+      <command>nasal</command>
+      <script>MD83.apu_switch();</script>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwAPU_Air</object-name>
+  <property>controls/switches/apu-air</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>25</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.890</x-m>
+    <y-m>0</y-m>
+    <z-m>1.582</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwAPU_Air</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/switches/apu-air</property>
+    </binding>
+    <binding> 
+      <command>nasal</command>
+      <script>MD83.apu_air_switch();</script>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwBatt</object-name>
+  <property>controls/switches/battery</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.811</x-m>
+    <y-m>0</y-m>
+    <z-m>1.542</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwBatt</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/switches/battery</property>
+    </binding>
+  </action>
+</animation>
+
+<!-- Engine and Fuel Switches -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwStartPump</object-name>
+  <property>controls/switches/start-pump</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.771</x-m>
+    <y-m>0</y-m>
+    <z-m>1.521</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwStartPump</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/switches/start-pump</property>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwIgn</object-name>
+  <property>controls/switches/eng-ign</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>25</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.771</x-m>
+    <y-m>0</y-m>
+    <z-m>1.521</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwIgn</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/switches/eng-ign</property>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwEngStartL</object-name>
+  <property>controls/switches/eng-start[0]/position</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>25</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.758</x-m>
+    <y-m>0</y-m>
+    <z-m>1.514</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwEngStartL</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/switches/eng-start[0]/position</property>
+    </binding>
+    <binding> 
+      <command>nasal</command>
+      <script>MD83.eng_startup_1(0);</script>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwEngStartR</object-name>
+  <property>controls/switches/eng-start[1]/position</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>25</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.758</x-m>
+    <y-m>0</y-m>
+    <z-m>1.514</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwEngStartR</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/switches/eng-start[1]/position</property>
+    </binding>
+    <binding> 
+      <command>nasal</command>
+      <script>MD83.eng_startup_1(1);</script>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwPumpLaft</object-name>
+  <property>controls/switches/pumpLaft</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.767</x-m>
+    <y-m>0</y-m>
+    <z-m>1.519</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwPumpLaft</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/switches/pumpLaft</property>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwPumpLfwd</object-name>
+  <property>controls/switches/pumpLfwd</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.733</x-m>
+    <y-m>0</y-m>
+    <z-m>1.502</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwPumpLfwd</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/switches/pumpLfwd</property>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwPumpRaft</object-name>
+  <property>controls/switches/pumpRaft</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.767</x-m>
+    <y-m>0</y-m>
+    <z-m>1.519</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwPumpRaft</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/switches/pumpRaft</property>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwPumpRfwd</object-name>
+  <property>controls/switches/pumpRfwd</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.733</x-m>
+    <y-m>0</y-m>
+    <z-m>1.502</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwPumpRfwd</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/switches/pumpRfwd</property>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwPumpCaft</object-name>
+  <property>controls/switches/pumpCaft</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.767</x-m>
+    <y-m>0</y-m>
+    <z-m>1.519</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwPumpCaft</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/switches/pumpCaft</property>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwPumpCfwd</object-name>
+  <property>controls/switches/pumpCfwd</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.733</x-m>
+    <y-m>0</y-m>
+    <z-m>1.502</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwPumpCfwd</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/switches/pumpCfwd</property>
+    </binding>
+  </action>
+</animation>
+
+</PropertyList>
+
+

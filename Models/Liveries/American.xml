@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<sim>
+  <model>
+    <livery>
+      <name type="string">American</name>
+      <texture>txt_fuselage.rgb</texture>
+    </livery>
+    <fairings>
+      <texture>txt_fuselage_fairing.rgb</texture>
+    </fairings>
+    <rudders>
+      <texture>txt_vstab_engines.rgb</texture>
+    </rudders>
+  </model>
+</sim>
+</PropertyList>

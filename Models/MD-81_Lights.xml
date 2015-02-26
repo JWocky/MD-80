@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+
+<!--
+McDonnell Douglas MD-81
+Gary R. Neely 'Buckaroo'
+
+Lighting control properties are passed over MP, therefore the animations
+take their cues from the MP properties rather than the source control
+properties. Here are the control to MP prop mappings as defined under
+MD-83-set.xml:
+
+      <int n="0" alias="/controls/lighting/beacon"/>
+      <int n="1" alias="/controls/lighting/tail"/>
+      <int n="2" alias="/controls/lighting/nav"/>
+      <int n="3" alias="/controls/lighting/landing-left"/>
+      <int n="4" alias="/controls/lighting/landing-right"/>
+
+Note that animations must take their property cues from the same properties without the
+leading slash. These properties are actually the ones under /ai/multiplayer, not the ones
+under /sim. If you accidentally include the leading slash, you're telling the animation to
+always fetch its value from /your/ plane, not AI/MP instances of the plane. If you want
+these to work over MP, make sure to drop the leading slash, and that will allow AI/MP instances
+the ability to take the properties relative to their root.
+
+Flash animations are used to make the landing/taxi lights appear more strongly when
+viewed on-axis. The flash center and actual glow-object centers are positioned to get
+the light to appear smaller and centered on the lamp when viewed off-axis, and to
+appear large and yet not intersect the airframe (which looks bad) when viewed on-axis.
+It's not perfect but I find it works reasonably well. This is largely a trompe-l'oeil
+until I can find a better solution.
+
+When modifying, think of the glow-object as the widest point of the light-cone, and the
+flash center as the point of the cone. The cone point is truncated at the flash <min>
+value, so that a small circle of light appears on the lamp object when viewed off-axis.
+So the cone point (flash center) will actually be somewhat behind the lamp object.
+-->
+
+
+<PropertyList>
+
+<path>mesh_lights.ac</path>
+
+
+<!-- Special Shaders -->
+
+<animation>
+  <type>noshadow</type>
+  <object-name>LampBeacon</object-name>
+  <object-name>LampBeaconOn</object-name>
+  <object-name>LampWingtipAft</object-name>
+  <object-name>LampWingtipAftOn</object-name>
+  <object-name>LampWingtipL</object-name>
+  <object-name>LampWingtipR</object-name>
+  <object-name>LampWingtipLOn</object-name>
+  <object-name>LampWingtipROn</object-name>
+  <object-name>GlowWingtipL</object-name>
+  <object-name>GlowWingtipR</object-name>
+  <!--<object-name>GlowLandingL</object-name>-->
+  <!--<object-name>GlowLandingR</object-name>-->
+  <object-name>GlowWingtipAftL</object-name>
+  <object-name>GlowWingtipAftR</object-name>
+  <object-name>GlowBeacon</object-name>
+</animation>
+
+
+<!-- Animations -->
+
+<animation>
+  <type>select</type>
+  <object-name>LampBeaconOn</object-name>
+  <object-name>GlowBeacon</object-name>
+  <condition>
+    <and>
+      <property>sim/multiplay/generic/float[3]</property>
+      <property>sim/multiplay/generic/int[0]</property>
+    </and>
+  </condition>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LampWingtipAftOn</object-name>
+  <object-name>GlowWingtipAftL</object-name>
+  <object-name>GlowWingtipAftR</object-name>
+  <condition>
+    <property>sim/multiplay/generic/int[1]</property>
+  </condition>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LampWingtipLOn</object-name>
+  <object-name>LampWingtipROn</object-name>
+  <object-name>GlowWingtipL</object-name>
+  <object-name>GlowWingtipR</object-name>
+  <condition>
+    <property>sim/multiplay/generic/int[2]</property>
+  </condition>
+</animation>
+
+<animation>
+  <type>flash</type>
+  <object-name>GlowWingtipL</object-name>
+  <center>
+   <x-m>27.550</x-m>
+   <y-m>-16.055</y-m>
+   <z-m>-0.050</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>-1</y>
+   <z>0</z>
+  </axis>
+  <power>4</power>
+  <factor>1</factor>
+  <offset>0.4</offset>
+  <two-sides type="bool">false</two-sides>
+  <min>0.01</min>
+  <max>1</max>
+</animation>
+
+<animation>
+  <type>flash</type>
+  <object-name>GlowWingtipR</object-name>
+  <center>
+   <x-m>27.550</x-m>
+   <y-m>16.055</y-m>
+   <z-m>0.050</z-m>
+  </center>
+  <axis>
+   <x>-1</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+  <power>4</power>
+  <factor>1</factor>
+  <offset>0.4</offset>
+  <two-sides type="bool">false</two-sides>
+  <min>0.01</min>
+  <max>1</max>
+</animation>
+
+<animation>
+  <type>flash</type>
+  <object-name>GlowWingtipAftL</object-name>
+  <center>
+   <x-m>28.954</x-m>
+   <y-m>-16.364</y-m>
+   <z-m>-0.042</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+  <power>2</power>
+  <factor>1</factor>
+  <offset>0.2</offset>
+  <two-sides type="bool">false</two-sides>
+  <min>0.01</min>
+  <max>1</max>
+</animation>
+<animation>
+  <type>flash</type>
+  <object-name>GlowWingtipAftR</object-name>
+  <center>
+   <x-m>28.954</x-m>
+   <y-m>16.364</y-m>
+   <z-m>-0.042</z-m>
+  </center>
+  <axis>
+   <x>1</x>
+   <y>0</y>
+   <z>0</z>
+  </axis>
+  <power>2</power>
+  <factor>1</factor>
+  <offset>0.2</offset>
+  <two-sides type="bool">false</two-sides>
+  <min>0.01</min>
+  <max>1</max>
+</animation>
+
+</PropertyList>
+

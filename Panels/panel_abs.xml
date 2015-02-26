@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+
+<!--
+McDonnell Douglas MD-81
+Gary R. Neely 'Buckaroo', Mar 2010
+-->
+
+
+<PropertyList>
+
+<name>Pedestal ABS</name>
+<background>Aircraft/MD-80/Panels/transparent-bg.rgb</background>
+<w>8</w>
+<h>8</h>
+
+<instruments>
+
+  <instrument>
+    <name>panel hotspots</name>
+    <x>4</x>
+    <y>4</y>
+    <w>8</w>
+    <h>8</h>
+    <w-base>8</w-base>
+    <h-base>8</h-base>
+
+    <actions>
+
+      <action>
+        <name>ABStoggle</name>
+        <button>0</button>
+        <x>-3</x>
+        <y>1</y>
+        <w>3</w>
+        <h>2</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>controls/autobrakes/ABS</property>
+        </binding>
+        <binding> 
+          <command>nasal</command>
+          <script>MD83.abs_arm();</script>
+        </binding>
+      </action>
+
+      <action>
+        <name>ABSselectInc</name>
+        <button>0</button>
+        <x>-2</x>
+        <y>-3</y>
+        <w>4</w>
+        <h>3</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/autobrakes/ABS-select</property>
+          <step>1</step>
+          <min>0</min>
+          <max>4</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>ABSselectDec</name>
+        <button>1</button>
+        <x>-2</x>
+        <y>-3</y>
+        <w>4</w>
+        <h>3</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>controls/autobrakes/ABS-select</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>4</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+    </actions>
+
+  </instrument>
+
+</instruments>
+
+</PropertyList>
+
+

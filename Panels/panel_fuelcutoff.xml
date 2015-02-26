@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<!--
+McDonnell Douglas MD-81
+Gary R. Neely 'Buckaroo', Mar 2010
+-->
+
+
+<PropertyList>
+
+<name>Pedestal Fuel Cutoff Panel</name>
+<background>Aircraft/MD-80/Panels/transparent-bg.rgb</background>
+<w>8</w>
+<h>2</h>
+
+<instruments>
+
+  <instrument>
+    <name>panel hotspots</name>
+    <x>4</x>
+    <y>1</y>
+    <w>8</w>
+    <h>4</h>
+    <w-base>8</w-base>
+    <h-base>4</h-base>
+
+    <actions>
+
+      <action>
+        <name>CutoffL</name>
+        <button>0</button>
+        <x>-4</x>
+        <y>-1</y>
+        <w>2</w>
+        <h>2</h>
+        <binding>
+          <command>nasal</command>
+          <script>MD83.cutoff_toggle(0);</script>
+        </binding>
+        <binding> 
+          <command>nasal</command>
+          <script>MD83.eng_startup_2(0);</script>
+        </binding>
+      </action>
+      <action>
+        <name>CutoffR</name>
+        <button>0</button>
+        <x>2</x>
+        <y>-1</y>
+        <w>2</w>
+        <h>2</h>
+        <binding>
+          <command>nasal</command>
+          <script>MD83.cutoff_toggle(1);</script>
+        </binding>
+        <binding> 
+          <command>nasal</command>
+          <script>MD83.eng_startup_2(1);</script>
+        </binding>
+      </action>
+
+    </actions>
+
+  </instrument>
+
+</instruments>
+
+</PropertyList>
+
+

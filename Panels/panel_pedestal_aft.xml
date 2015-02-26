@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+
+<!--
+McDonnell Douglas MD-81
+Gary R. Neely 'Buckaroo', Mar 2010
+-->
+
+
+<PropertyList>
+
+<name>Pedestal Aft Panel</name>
+<background>Aircraft/MD-80/Panels/transparent-bg.rgb</background>
+<w>64</w>
+<h>64</h>
+
+<instruments>
+
+  <instrument>
+    <name>panel hotspots</name>
+    <x>32</x>
+    <y>32</y>
+    <w>64</w>
+    <h>64</h>
+    <w-base>64</w-base>
+    <h-base>64</h-base>
+
+    <actions>
+
+      <action>
+        <name>PneuL</name>
+        <button>0</button>
+        <x>-31</x>
+        <y>-4</y>
+        <w>14</w>
+        <h>14</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/pneumatic/engine[0]/bleed</property>
+        </binding>
+      </action>
+      <action>
+        <name>PneuR</name>
+        <button>0</button>
+        <x>17</x>
+        <y>-4</y>
+        <w>14</w>
+        <h>14</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/pneumatic/engine[1]/bleed</property>
+        </binding>
+      </action>
+
+    </actions>
+
+  </instrument>
+
+</instruments>
+
+</PropertyList>
+
+

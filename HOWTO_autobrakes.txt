@@ -1,0 +1,15 @@
+MD-81 Automatic Braking System (ABS)
+------------------------------------
+
+The MD-81 is equipped with a system that will automatically deploy brakes. The controls for this system are located on the aft section of the center pedestal, on the co-pilot side. The controls consist of a brake setting selector and an arming switch. To use the system, select a setting and engage the arming switch.
+
+ABS will engage when ground spoilers are fully deployed, the nose gear has touched down, and throttles are in fully retarded positions. ABS will disengage under any of the following conditions: the aircraft comes to a complete stop, throttles are advanced, or ground spoilers are retracted. ABS will auto-disarm if ground spoilers are deployed (usually on a touch-down) and then retracted before the nose wheel touches down.
+
+When using ABS for takeoff, you have one setting that deploys brakes quickly and at full strength. For landing, you have three settings, at roughly 40% (MIN), 65% (MED), and 100% (MAX) effectiveness. MIN and MED have a 3 second delay after ground spoilers are deployed before brakes are engaged. MAX setting will engage brakes almost immediately upon activation.
+
+When ABS is in use, you will not have manual brakes. If an ABS setting is selected but the system is not armed (or has been disarmed, either by the brakes disengaging as noted above, or by an auto-disarm, you will not have any brakes at all, either manual or automatic. The system warns you of this by illuminating the little orange light on either far end of the glareshield. Again, this light does not indicate ABS is on or brakes are deployed, it warns you that ABS is on but not armed-- you have no brakes. If this light illuminates, either re-arm the system or turn ABS off.
+
+
+---
+Gary R. Neely "Buckaroo"
+

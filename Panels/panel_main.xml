@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+
+<!--
+McDonnell Douglas MD-81
+Gary R. Neely 'Buckaroo', Mar 2010
+-->
+
+
+<PropertyList>
+
+<name>Main Panel</name>
+<background>Aircraft/MD-80/Panels/transparent-bg.rgb</background>
+<w>1024</w>
+<h>256</h>
+
+<instruments>
+
+  <instrument>
+    <name>panel hotspots</name>
+    <x>512</x>
+    <y>128</y>
+    <w>1024</w>
+    <h>256</h>
+    <w-base>1024</w-base>
+    <h-base>256</h-base>
+
+    <actions>
+
+<!-- Panel Lighting Knob -->
+
+      <action>
+        <name>PanelLtInc</name>
+        <button>0</button>
+        <x>-463</x>
+        <y>-115</y>
+        <w>15</w>
+        <h>20</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/panel-norm</property>
+          <step>0.1</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>PanelLtDec</name>
+        <button>1</button>
+        <x>-463</x>
+        <y>-115</y>
+        <w>15</w>
+        <h>20</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/panel-norm</property>
+          <step>-0.1</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+<!-- Digital Lighting Knob -->
+
+      <action>
+        <name>DigitalLtInc</name>
+        <button>0</button>
+        <x>-448</x>
+        <y>-115</y>
+        <w>15</w>
+        <h>20</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/digital-norm</property>
+          <step>0.1</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>DigitalLtDec</name>
+        <button>1</button>
+        <x>-448</x>
+        <y>-115</y>
+        <w>15</w>
+        <h>20</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/digital-norm</property>
+          <step>-0.1</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+<!-- EFIS dimmer: Decision Height knob -->
+
+      <action>
+        <name>DHinc</name>
+        <button>0</button>
+        <x>-159</x>
+        <y>18</y>
+        <w>10</w>
+        <h>10</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/altimeter/DH</property>
+          <step>10</step>
+          <min>0</min>
+          <max>990</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>DHdec</name>
+        <button>1</button>
+        <x>-159</x>
+        <y>18</y>
+        <w>10</w>
+        <h>10</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/altimeter/DH</property>
+          <step>-10</step>
+          <min>0</min>
+          <max>990</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+<!-- EFIS dimmer: test button (used to toggle rudder/throttle display on HSI) -->
+
+      <action>
+        <name>Test</name>
+        <button>0</button>
+        <x>-165</x>
+        <y>22</y>
+        <w>5</w>
+        <h>5</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/sim/instrument-options/hsi/show-rudder</property>
+        </binding>
+      </action>
+
+<!-- EFIS dimmer: PFD knob -->
+
+      <action>
+        <name>PFDinc</name>
+        <button>0</button>
+        <x>-163</x>
+        <y>7</y>
+        <w>10</w>
+        <h>10</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/pfd-norm</property>
+          <step>0.1</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>PFDdec</name>
+        <button>1</button>
+        <x>-163</x>
+        <y>7</y>
+        <w>10</w>
+        <h>10</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/pfd-norm</property>
+          <step>-0.1</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+<!-- EFIS dimmer: Nav display knob -->
+
+      <action>
+        <name>NDinc</name>
+        <button>0</button>
+        <x>-163</x>
+        <y>-5</y>
+        <w>10</w>
+        <h>10</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/nd-norm</property>
+          <step>0.1</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>NDDdec</name>
+        <button>1</button>
+        <x>-163</x>
+        <y>-5</y>
+        <w>10</w>
+        <h>10</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/lighting/nd-norm</property>
+          <step>-0.1</step>
+          <min>0</min>
+          <max>1</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+<!-- Left RMI -->
+
+      <action>
+        <name>RMIL1</name>
+        <button>0</button>
+        <x>-340</x>
+        <y>-60</y>
+        <w>16</w>
+        <h>16</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/instrumentation/rmi-needle[0]/mode</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>RMIL2</name>
+        <button>0</button>
+        <x>-308</x>
+        <y>-60</y>
+        <w>16</w>
+        <h>16</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/instrumentation/rmi-needle[1]/mode</property>
+        </binding>
+      </action>
+
+    </actions>
+
+  </instrument>
+
+</instruments>
+
+</PropertyList>
+
+

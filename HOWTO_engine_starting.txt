@@ -1,0 +1,83 @@
+MD-81 Engine Procedures
+-----------------------
+
+Your MD-81 begins with engines and APU in a shutdown but warm state. For fast startup you may use the MagicStartup feature in the MD-81 menu, but I encourage you to learn and use the startup procedures.
+
+
+
+Engine starting Procedures, Quickie Version:
+
+1.  Battery on
+2.  Start pump on
+3.  APU master start
+4.  Turn APU air on, wait a few seconds for pneumatic pressure to rise to 35 PSI
+5.  Check fuel cutoffs are unlocked and in the cutoff (down) position
+6.  Fuel boost pumps on
+7.  Start pump off
+8.  Igniters on
+9.  Engine pneu x-feed on (upright)
+10. Starter on
+11. Wait for N1 to reach 20%, then fuel on
+12. Starter off, pneu x-feed off
+
+Repeat 9-12 for 2nd engine.
+Engine is ready when N1 reaches 60% and N2 reaches 30%.
+
+
+
+Engine Starting Procedures, Full Version:
+
+To start the engines, they need fuel, electric power for the igniters, and an air pressure source for bleed air to spin them up. An engine can draw electrical power and air from a running engine, but typically you'll be starting with both engines off so you'll need the APU to provide electrical power and air to the pneumatic system. Once one engine is started, power and air can come from the running engine. So let's run through the APU startup procedure.
+
+The APU
+
+The auxilliary power unit is located aft and below the passenger cabin. It draws fuel from the right tank and has a generator capable of providing the same electric power as either engine. (All essential aircraft systems can be powered by a single engine or the APU.) The APU can also provide air to the pneumatic system, which powers engine startups, air conditioning, and anti-icing systems. Since the APU consumes substantial amounts of fuel over time, especially when providing air, it is often shut down during flight.
+
+Starting the APU
+
+1. Make sure the battery is on. The battery switch is located just below the APU controls on the overhead panel.
+
+2. Turn on the start pump. The switch is located on the overhead engine starting panel. The start pump is a DC unit that can be run off the battery until AC power is available to run the main pumps. It provides fuel pressure from the right tank. Do not run the start pump for long periods, as it has no cooling facility and can overheat. Alternatively, if you have AC power from ground or an engine, you may use either of the right tank fuel pumps to provide fuel pressure for APU startup.
+
+3. Locate the APU section on the overhead panel. Move the APU master switch to the start position. APU air should be off. Monitor the APU EGT and RPM gauges-- they should begin rising. If they do not, check items 1 and 2 and try again. AC power will be available once the APU is running.
+
+4. Turn on the APU air switch and monitor the little pressure gauge on the overhead engine start panel. This displays the pressure in the central pneumatic bus. The APU has a warm-up period of 1 minute before air is available, regardless of the switch setting. You begin with the APU 66% warmed-up so the first time it takes only 20 seconds before air is available, but if you stop the APU and let it cool down before starting it again, it will require the full 60 seconds before air is available. When the air unit is on, you should see an additional rise in APU EGT, and the pressure gauge should indicate about 35 PSI. RPM should remain constant. Note that running with air on consumes additional fuel.
+
+5. When the APU is running, engage one or both right tank fuel pumps and turn off the start pump.
+
+
+Shutting down the APU
+
+Simply move the APU master switch to off. Once in flight, shutting off the APU conserves fuel.
+
+
+Starting the Engines
+
+1. Fuel cutoff valves should be in the off position (no fuel to engines). These are a pair of levers on the pedestal drum, below and to either side of the throttles. Their position may be locked to prevent accidental engine shutdown in flight. Use the MD-81 menu to toggle their locked status. To unlock them in the real aicraft you would normally press down on the little button mounted on the lever, but in the simulation use the menu feature. Both cutoff controls should begin unlocked and in the down (aft) position, indicating fuel is cut off to the engine.
+
+2. The engine's pneumatic cross-feed valve should be moved to the on position. This lever is located on the very aft end of the pedestal, between the seats. Select the valve for the engine you wish to start and toggle it such that it is in the upright position. This ties the engine to the central pneumatic bus.
+
+3. The pneumatic pressure gauge on the overhead engine starting panel should show at least 35 PSI. There are two ways to get pressure on the pneumatic bus. Either the APU must be providing air, or the other engine must be running and have its pneumatic cross-feed valve open.
+
+4. Turn on both fuel boost pumps, located on the overhead panel, to the right of the engine start switches. The left engine draws from the left tank, and the right engine draws from the right tank. The cross-feed lever should be off, and the center tank boost pumps should be off. For right engine startup, the start pump may be used instead of the main boost pumps, but use the main pumps if AC power is available. Either forward or aft main pump may be used, though both are normally on.
+
+5. On the engine start panel, set the igniter switch to 'CONTIN' (continuous). This engages the engine ignition circuits. The igniter has two settings, a maximum and a regular continous operation setting. When the igniter is set to continuous and the starter switch is on, the maximum circuit is used. With the starter switch off, the minimal circuit is used. The 'OVRD' over-ride setting (not simulated) forces the maximum circuit to be always on.
+
+6. Toggle the starter switch on the overhead engine panel. This opens a valve to the pneumatic system, allowing bleed air to enter the turbines and get the compressor rotating. Watch the N2 gauge-- N2 should begin rising.
+
+7. When N2 maintains motoring speed of 20%, open the engine's fuel valve (move the valve to the upper position, closer to the throttles). Don't add fuel until N2 has reached motoring RPM. Adding fuel too early can cause overheating, hot starts, or other Bad Things. With the fuel cutoff lever in the upright position (fuel is enabled to the engine), N2 should begin to rise toward idle speed of 60%. Note that opening any fuel valve will auto-engage the igniters.
+
+8. Confirm that N2 is rising, then return the engine's starter switch to the off position. Return the engine's pneumatic cross-feed lever to the off position, unless you wish to use that engine's air to start the opposite engine.
+
+9. Once N2 reports 60% and N1 is at 30%, the engine is good to go. The ignitor switch should remain on during takeoff, then it may be switched off, saving wear on the ignitors. It should be returned to the on position for landing or any adverse flight conditions.
+
+
+Engine Shutdown
+
+To shutdown an engine, unlock the fuel cutoff lever and toggle it to off. The engine will be starved of fuel and quit near instantly. N1 and N2 will begin to fall off.
+
+Note that while an engine is off, N1 and N2 may not settle on 0%, especially in flight. This is due to the windmilling effect of air passing through the blades.
+
+
+---
+Gary R. Neely "Buckaroo"

@@ -1,0 +1,13 @@
+McDonnell Douglas MD-81 for Flightgear
+
+This model is currently available as free for personal, non-commercial use. If used in any derivative material, please credit me where applicable.
+
+Creative Commons license "CC-BY-NC-SA":
+
+http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+
+Gary R. Neely
+January 2010
+grneely@gmail.com
+"Buckaroo" on the Flightgear forums

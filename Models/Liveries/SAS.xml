@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<sim>
+  <model>
+    <livery>
+      <name type="string">SAS</name>
+      <texture>txt_fuselage_sas.rgb</texture>
+    </livery>
+    <fairings>
+      <texture>txt_fuselage_fairing_sas.rgb</texture>
+    </fairings>
+    <rudders>
+      <texture>txt_vstab_engines_sas.rgb</texture>
+    </rudders>
+  </model>
+</sim>
+</PropertyList>

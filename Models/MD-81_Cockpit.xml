@@ -1,0 +1,811 @@
+<?xml version="1.0"?>
+
+<!--
+McDonnell Douglas MD-81
+Gary R. Neely 'Buckaroo', Nov 2009
+-->
+
+<PropertyList>
+
+<path>mesh_cockpit.ac</path>
+
+
+<!-- Sub-Model Imports -->
+
+<model>
+  <name>OverheadPanel</name>
+  <path>Aircraft/MD-80/Models/MD-81_Overhead.xml</path>
+</model>
+
+<model>
+  <name>Instruments</name>
+  <path>Aircraft/MD-80/Models/MD-81_Instruments.xml</path>
+</model>
+
+
+<!-- Hotspot Panels -->
+
+<model>
+  <name>2Dhotspots</name>
+  <path>Aircraft/MD-80/Models/MD-81_Panels.xml</path>
+</model>
+
+
+<!-- Level Of Detail -->
+
+<animation>
+  <type>range</type>
+  <object-name>Instruments</object-name>
+  <min-m>0</min-m>
+  <max-m>5</max-m>
+</animation>
+<animation>
+  <type>range</type>
+  <object-name>OverheadPanel</object-name>
+  <min-m>0</min-m>
+  <max-m>5</max-m>
+</animation>
+
+
+<animation>
+  <type>noshadow</type>
+  <object-name>SeatCushionsCP</object-name>
+  <object-name>SeatCushionsP</object-name>
+  <object-name>SeatCP</object-name>
+  <object-name>SeatP</object-name>
+  <object-name>PanelMainC</object-name>
+  <object-name>PanelMainL</object-name>
+  <object-name>PanelMainR</object-name>
+  <object-name>PanelMainD</object-name>
+  <object-name>FlightDeck</object-name>
+  <object-name>FDFloorFwd</object-name>
+  <object-name>FDFloorMetal</object-name>
+  <object-name>FDFloorCarpet</object-name>
+  <object-name>FlightDeckBulkhead</object-name>
+  <object-name>LGLever</object-name>
+  <object-name>FlapLever</object-name>
+  <object-name>ThrottleL</object-name>
+  <object-name>ThrottleR</object-name>
+  <object-name>ThrottleRevL</object-name>
+  <object-name>ThrottleRevL</object-name>
+  <object-name>YokeL</object-name>
+  <object-name>YokeR</object-name>
+  <object-name>YokeTrimL</object-name>
+  <object-name>YokeTrimR</object-name>
+  <object-name>YokeColL</object-name>
+  <object-name>YokeColR</object-name>
+  <object-name>YokeBase</object-name>
+  <object-name>XfeedLever</object-name>
+  <object-name>FuelCutoffL</object-name>
+  <object-name>FuelCutoffR</object-name>
+  <object-name>PneuLeverL</object-name>
+  <object-name>PneuLeverR</object-name>
+  <object-name>SwABS</object-name>
+  <object-name>KnobABS</object-name>
+  <object-name>LampABS</object-name>
+  <object-name>LampABSon</object-name>
+</animation>
+
+
+<!-- Panel glows -->
+
+<animation>
+  <type>material</type>
+  <object-name>PedestalABS</object-name>
+  <object-name>PedestalDrumFace</object-name>
+  <emission>
+    <red>0.4</red>
+    <green>0.2</green>
+    <blue>0.1</blue>
+    <factor-prop>/controls/lighting/panel-norm</factor-prop>
+  </emission>
+</animation>
+
+
+<!-- Animations -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>LGLever</object-name>
+  <property>controls/gear/gear-down</property>
+  <interpolation>
+    <entry><ind>0</ind><dep>90</dep></entry>
+    <entry><ind>1</ind><dep> 0</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.175</x-m>
+    <y-m>0</y-m>
+    <z-m>0.909</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>-1</y>
+    <z>0</z>
+  </axis>
+</animation> 
+<animation>
+  <type>pick</type>
+  <object-name>LGLever</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/gear/gear-down</property>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>FlapLever</object-name>
+  <property>controls/flight/flaps</property>
+  <interpolation>
+    <entry><ind>    0</ind><dep> 0</dep></entry>
+    <entry><ind>0.001</ind><dep>15</dep></entry>
+    <entry><ind>0.275</ind><dep>28</dep></entry>
+    <entry><ind>0.375</ind><dep>34</dep></entry>
+    <entry><ind>  0.7</ind><dep>47</dep></entry>
+    <entry><ind>    1</ind><dep>62</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.616</x-m>
+    <y-m>0</y-m>
+    <z-m>0.654</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation> 
+
+<animation>
+  <type>pick</type>
+  <object-name>FlapLever</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>nasal</command>
+      <script>controls.flapsDown(1)</script>
+    </binding>
+    <mod-up>
+    <binding>
+      <command>nasal</command>
+      <script>controls.flapsDown(0)</script>
+    </binding>
+    </mod-up>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>FlapLever</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>nasal</command>
+      <script>controls.flapsDown(-1)</script>
+    </binding>
+    <mod-up>
+    <binding>
+      <command>nasal</command>
+      <script>controls.flapsDown(0)</script>
+    </binding>
+    </mod-up>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>ThrottleL</object-name>
+  <object-name>ThrottleRevL</object-name>
+  <property>controls/engines/engine[0]/throttle</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>45</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.616</x-m>
+    <y-m>0</y-m>
+    <z-m>0.654</z-m>
+  </center>
+  <axis>
+    <x>0.0</x>
+    <y>-1.0</y>
+    <z>0.0</z>
+  </axis>
+</animation>
+<animation>
+  <type>rotate</type>
+  <object-name>ThrottleR</object-name>
+  <object-name>ThrottleRevR</object-name>
+  <property>controls/engines/engine[1]/throttle</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>45</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.616</x-m>
+    <y-m>0</y-m>
+    <z-m>0.654</z-m>
+  </center>
+  <axis>
+    <x>0.0</x>
+    <y>-1.0</y>
+    <z>0.0</z>
+  </axis>
+</animation>
+
+
+<animation>
+  <type>pick</type>
+  <object-name>ThrottleL</object-name>
+  <object-name>ThrottleRevL</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/controls/engines/engine[0]/throttle</property>
+      <step>0.05</step>
+      <min>0</min>
+      <max>1</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>ThrottleL</object-name>
+  <object-name>ThrottleRevL</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/controls/engines/engine[0]/throttle</property>
+      <step>-0.05</step>
+      <min>0</min>
+      <max>1</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>ThrottleR</object-name>
+  <object-name>ThrottleRevR</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/controls/engines/engine[1]/throttle</property>
+      <step>0.05</step>
+      <min>0</min>
+      <max>1</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>ThrottleR</object-name>
+  <object-name>ThrottleRevR</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/controls/engines/engine[1]/throttle</property>
+      <step>-0.05</step>
+      <min>0</min>
+      <max>1</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+
+
+<animation>
+  <type>rotate</type>
+  <object-name>ThrottleRevL</object-name>
+  <property>surface-positions/reverser-norm[0]</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>90</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.669</x-m>
+    <y-m>0</y-m>
+    <z-m>0.836</z-m>
+  </center>
+  <axis>
+    <x>0.0</x>
+    <y>1.0</y>
+    <z>0.0</z>
+  </axis>
+</animation> 
+<animation>
+  <type>rotate</type>
+  <object-name>ThrottleRevR</object-name>
+  <property>surface-positions/reverser-norm[1]</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>90</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.669</x-m>
+    <y-m>0</y-m>
+    <z-m>0.836</z-m>
+  </center>
+  <axis>
+    <x>0.0</x>
+    <y>1.0</y>
+    <z>0.0</z>
+  </axis>
+</animation> 
+
+<!-- Fuel Cutoff -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>FuelCutoffL</object-name>
+  <property>controls/engines/engine[0]/cutoff</property>
+  <interpolation>
+    <entry><ind>1</ind><dep> 0</dep></entry>
+    <entry><ind>0</ind><dep>42</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.608</x-m>
+    <y-m>0</y-m>
+    <z-m>0.630</z-m>
+  </center>
+  <axis>
+    <x>0.0</x>
+    <y>-1.0</y>
+    <z>0.0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>FuelCutoffL</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/engines/engine[0]/cutoff</property>
+    </binding>
+    <binding> 
+      <command>nasal</command>
+      <script>MD83.eng_startup_2(0);</script>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>rotate</type>
+  <object-name>FuelCutoffR</object-name>
+  <property>controls/engines/engine[1]/cutoff</property>
+  <interpolation>
+    <entry><ind>1</ind><dep> 0</dep></entry>
+    <entry><ind>0</ind><dep>42</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.608</x-m>
+    <y-m>0</y-m>
+    <z-m>0.630</z-m>
+  </center>
+  <axis>
+    <x>0.0</x>
+    <y>-1.0</y>
+    <z>0.0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>FuelCutoffR</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/engines/engine[1]/cutoff</property>
+    </binding>
+    <binding> 
+      <command>nasal</command>
+      <script>MD83.eng_startup_2(1);</script>
+    </binding>
+  </action>
+</animation>
+
+<!-- Fuel X Feed -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>XfeedLever</object-name>
+  <property>controls/fuel/xfeed</property>
+  <interpolation>
+    <entry><ind>0</ind><dep>  0</dep></entry>
+    <entry><ind>1</ind><dep>-45</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.608</x-m>
+    <y-m>0</y-m>
+    <z-m>0.630</z-m>
+  </center>
+  <axis>
+    <x>0.0</x>
+    <y>-1.0</y>
+    <z>0.0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>XfeedLever</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/fuel/xfeed</property>
+    </binding>
+  </action>
+</animation>
+
+<!-- Speed Brake -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>SpdBrakeLever</object-name>
+  <property>controls/flight/spoilers-master</property>
+  <interpolation>
+    <entry><ind>0.0</ind><dep> 20</dep></entry>
+    <entry><ind>0.5</ind><dep>  0</dep></entry>
+    <entry><ind>1.0</ind><dep>-12</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.608</x-m>
+    <y-m>0</y-m>
+    <z-m>0.630</z-m>
+  </center>
+  <axis>
+    <x>0.0</x>
+    <y>-1.0</y>
+    <z>0.0</z>
+  </axis>
+</animation>
+<animation>
+  <type>translate</type>
+  <object-name>SpdBrakeLever</object-name>
+  <property>controls/flight/spoilers-auto-ani</property>
+  <interpolation>
+    <entry><ind>0</ind><dep>   0</dep></entry>
+    <entry><ind>1</ind><dep>0.02</dep></entry>
+  </interpolation>
+  <axis>
+    <x>0</x>
+    <y>0</y>
+    <z>1</z>
+  </axis>
+</animation>
+
+<!-- Pneumatic Engine Crossfeed Levers -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>PneuLeverL</object-name>
+  <property>/controls/pneumatic/engine[0]/bleed</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>70</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>3.064</x-m>
+    <y-m>-0.066</y-m>
+    <z-m>0.480</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>-1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>rotate</type>
+  <object-name>PneuLeverR</object-name>
+  <property>/controls/pneumatic/engine[1]/bleed</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>70</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>3.064</x-m>
+    <y-m>0</y-m>
+    <z-m>0.480</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>-1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>PneuLeverL</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/pneumatic/engine[0]/bleed</property>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>PneuLeverR</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>/controls/pneumatic/engine[1]/bleed</property>
+    </binding>
+  </action>
+</animation>
+
+<!-- ABS -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwABS</object-name>
+  <property>controls/autobrakes/ABS</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>3.023</x-m>
+    <y-m>0.111</y-m>
+    <z-m>0.556</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>-1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwABS</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-toggle</command>
+      <property>controls/autobrakes/ABS</property>
+    </binding>
+    <binding> 
+      <command>nasal</command>
+      <script>MD83.abs_arm();</script>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>KnobABS</object-name>
+  <property>controls/autobrakes/ABS-select</property>
+  <interpolation>
+    <entry><ind>0</ind><dep>  40</dep></entry>
+    <entry><ind>1</ind><dep>   0</dep></entry>
+    <entry><ind>2</ind><dep>-40</dep></entry>
+    <entry><ind>3</ind><dep>-105</dep></entry>
+    <entry><ind>4</ind><dep>-150</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>3.058</x-m>
+    <y-m>0.123</y-m>
+    <z-m>0.550</z-m>
+  </center>
+  <axis>
+    <x>0.259</x>
+    <y>0</y>
+    <z>0.966</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>KnobABS</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>controls/autobrakes/ABS-select</property>
+      <step>1</step>
+      <min>0</min>
+      <max>4</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>controls/autobrakes/ABS-select</property>
+      <step>-1</step>
+      <min>0</min>
+      <max>4</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>LampABS</object-name>
+  <condition>
+    <or>
+      <property>/systems/autobrakes/armed</property>
+      <equals>
+        <property>/controls/autobrakes/ABS-select</property>
+        <value>1</value>
+      </equals>
+    </or>
+  </condition>
+</animation>
+<animation>
+  <type>select</type>
+  <object-name>LampABSon</object-name>
+  <condition>
+    <and>
+      <not><property>/systems/autobrakes/armed</property></not>
+      <not-equals>
+        <property>/controls/autobrakes/ABS-select</property>
+        <value>1</value>
+      </not-equals>
+    </and>
+  </condition>
+</animation>
+
+
+<!-- Pedals -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>PedalL</object-name>
+  <object-name>PedalRodL</object-name>
+  <property>controls/flight/rudder</property>
+  <interpolation>
+    <entry><ind> 1</ind><dep> 10</dep></entry>
+    <entry><ind>-1</ind><dep>-10</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.020</x-m>
+    <y-m>0</y-m>
+    <z-m>-0.100</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>PedalR</object-name>
+  <object-name>PedalRodR</object-name>
+  <property>controls/flight/rudder</property>
+  <interpolation>
+    <entry><ind> 1</ind><dep>-10</dep></entry>
+    <entry><ind>-1</ind><dep> 10</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.020</x-m>
+    <y-m>0</y-m>
+    <z-m>-0.100</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+
+<!-- Yokes -->
+
+<animation>
+  <type>select</type>
+  <object-name>YokeColL</object-name>
+  <object-name>YokeL</object-name>
+  <object-name>YokeTrimL</object-name>
+  <condition>
+    <property>/sim/yoke-visible</property>
+  </condition>
+</animation>
+
+<property>/sim/yokes-visible</property>
+
+<animation>
+  <type>rotate</type>
+  <object-name>YokeColL</object-name>
+  <object-name>YokeL</object-name>
+  <object-name>YokeTrimL</object-name>
+  <property>controls/flight/elevator</property>
+  <factor>-12</factor>
+  <center>
+    <x-m>2.626</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.230</z-m>
+  </center>
+  <axis>
+    <x>0.0</x>
+    <y>1.0</y>
+    <z>0.0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>YokeL</object-name>
+  <object-name>YokeTrimL</object-name>
+  <property>controls/flight/aileron</property>
+  <factor>60</factor>
+  <center>
+    <x-m>0</x-m>
+    <y-m>-0.500</y-m>
+    <z-m>0.856</z-m>
+  </center>
+  <axis>
+    <x>-1.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>YokeColR</object-name>
+  <object-name>YokeR</object-name>
+  <object-name>YokeTrimR</object-name>
+  <property>controls/flight/elevator</property>
+  <factor>-12</factor>
+  <center>
+    <x-m>2.626</x-m>
+    <y-m>0.0</y-m>
+    <z-m>0.230</z-m>
+  </center>
+  <axis>
+    <x>0.0</x>
+    <y>1.0</y>
+    <z>0.0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>YokeR</object-name>
+  <object-name>YokeTrimR</object-name>
+  <property>controls/flight/aileron</property>
+  <factor>60</factor>
+  <center>
+    <x-m>0.0</x-m>
+    <y-m>0.500</y-m>
+    <z-m>0.856</z-m>
+  </center>
+  <axis>
+    <x>-1.0</x>
+    <y>0.0</y>
+    <z>0.0</z>
+  </axis>
+</animation>
+
+</PropertyList>
+

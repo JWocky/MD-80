@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<!--
+McDonnell Douglas MD-81
+Gary R. Neely 'Buckaroo', Nov 2009
+-->
+
+<PropertyList>
+
+<sim include="Systems/MD-81-views.xml">
+  <description>McDonnell Douglas MD-83</description>
+  <author>Gary Neely</author>
+
+  <flight-model>yasim</flight-model>
+  <aero>MD-83-yasim</aero>
+  <fuel-fraction>0.5</fuel-fraction>
+
+  <model>
+    <path>Aircraft/MD-80/Models/MD-83.xml</path>
+    <livery>
+      <file type="string">American</file>
+    </livery>
+  </model> 
+
+  <systems>
+    <autopilot>
+      <path>Aircraft/MD-80/Systems/MD-81-autopilot.xml</path>
+    </autopilot>
+    <electrical>
+      <path>Aircraft/Generic/generic-electrical.xml</path>
+    </electrical>
+  </systems> 
+
+  <instrumentation>
+    <path>Aircraft/MD-80/Systems/MD-81-instrumentation.xml</path>
+  </instrumentation>
+
+  <sound>
+    <path>Aircraft/MD-80/Sounds/MD-81-sound.xml</path>
+  </sound>
+
+  <panel>
+    <path>Aircraft/Generic/Panels/generic-vfr-panel.xml</path>
+    <visibility>false</visibility>
+  </panel>
+
+  <airport>
+    <runways>
+      <start-offset-m>30</start-offset-m>
+    </runways>
+  </airport>
+
+  <!-- Flap detents -->
+  <flaps>
+    <setting>0.00</setting>
+    <setting>0.125</setting> <!-- 5 deg -->
+    <setting>0.275</setting> <!-- 11 deg (standard takeoff) -->
+    <setting>0.375</setting> <!-- 15 deg (standard takeoff)-->
+    <setting>0.5</setting>   <!-- 20 deg -->
+    <setting>0.7</setting>   <!-- 28 deg (standard landing) -->
+    <setting>1.00</setting>  <!-- 40 deg (standard landing) -->
+  </flaps>
+
+  <weight n="0">
+    <name>Crew</name>
+    <weight-lb>360</weight-lb> 
+    <max-lb>500</max-lb>
+    <min-lb>300</min-lb>
+  </weight>
+
+  <weight n="1">
+    <name>Passengers/Cargo</name>
+    <weight-lb>22000</weight-lb> 
+    <max-lb>42000</max-lb>
+    <min-lb>0</min-lb>      
+  </weight>
+
+  <yoke-visible type="bool">1</yoke-visible>
+
+		<menubar>
+			<default>
+				<menu n="100">
+					<label>MD-83</label>
+					<item>
+						<label>Select Livery</label>
+						<binding>
+							<command>nasal</command>
+							<script>aircraft.livery.dialog.toggle()</script>
+						</binding>
+					</item>
+					<item>
+						<label>Autostart</label>
+						<binding> 
+							<command>nasal</command>
+							<script>MD83.eng_magicstartup();</script>
+						</binding>
+					</item>
+					<item>
+						<label>Arm Auto-Spoilers</label>
+						<binding> 
+							<command>nasal</command>
+							<script>MD83.spoiler_arm();</script>
+						</binding>
+					</item>
+					<item>
+						<label>Disarm Auto-Spoilers</label>
+						<binding>
+							<command>nasal</command>
+							<script>MD83.spoiler_disarm();</script>
+						</binding>
+					</item>
+					<item>
+						<label>Toggle Fuel Cutoff Lockouts</label>
+						<binding> 
+							<command>property-toggle</command>
+							<property>/controls/fuel/lockout-cutoffs</property>
+						</binding>
+					</item>
+					<item>
+						<label>Toggle Cross-Feed</label>
+						<binding> 
+							<command>property-toggle</command>
+							<property>/controls/fuel/xfeed</property>
+						</binding>
+					</item>
+					<item>
+						<label>Captain's Yoke On/Off</label>
+						<binding>
+							<command>property-toggle</command>
+							<property>/sim/yoke-visible</property>
+						</binding>
+					</item>
+					<item>
+						<label>Toggle Rudder and Throttle Display On HSI</label>
+						<binding>
+							<command>property-toggle</command>
+							<property>/sim/instrument-options/hsi/show-rudder</property>
+						</binding>
+					</item>
+					<item>
+						<label>Set Comm 1 to 122.75</label>
+						<binding>
+							<command>property-assign</command>
+							<property>instrumentation/comm[0]/frequencies/selected-mhz</property>
+							<value type="double">122.75</value>
+						</binding>
+					</item>
+				</menu>
+			</default>
+		</menubar>
+
+  <!-- These values are used to pass custom flight surface positions over MP -->
+  <multiplay>
+    <generic>
+      <float n="0" alias="/surface-positions/left-aileron-pos-ani-norm"/>
+      <float n="1" alias="/surface-positions/right-aileron-pos-ani-norm"/>
+      <float n="2" alias="/surface-positions/elevator-pos-ani-norm"/>
+      <!-- <float n="3" alias="/sim/model/lighting/beacon"/> --> <!-- Doesn't work but reserve float[3] for this; see MD-81.nas -->
+      <float n="4" alias="/surface-positions/reverser-norm[0]"/>
+      <float n="5" alias="/surface-positions/reverser-norm[1]"/>
+      <float n="6" alias="/controls/flight/spoilers-pos-norm-left"/>
+      <float n="7" alias="/controls/flight/spoilers-pos-norm-right"/>
+      <float n="8" alias="/controls/flight/spoilers-pos-norm-ground"/>
+      <int n="0" alias="/controls/lighting/beacon"/>
+      <int n="1" alias="/controls/lighting/wingtipaft"/>
+      <int n="2" alias="/controls/lighting/nav"/>
+      <int n="3" alias="/controls/lighting/landing-left"/>
+      <int n="4" alias="/controls/lighting/landing-right"/>
+    </generic>
+  </multiplay>
+
+  <instrument-options>
+    <hsi>
+      <show-rudder type="bool">0</show-rudder>
+    </hsi>
+  </instrument-options>
+
+</sim>
+
+
+<autopilot>
+  <locks>
+    <at-mode type="int">0</at-mode>
+  </locks>
+</autopilot>
+
+<!--
+These n1/n2 values are used in place of FDM values in order to simulate engine
+startup/shutdown procedures. During normal engine operation, FDM values are mapped
+to these values, but all animations are based on these 'actual' values.
+State: off (0), startup stage 1 (1), startup stage 2 (2), running (3), shutdown (4)
+-->
+<engines>
+  <engine n="0">
+    <fuel-flow-pph type="float">0.0</fuel-flow-pph>
+    <n1-actual type="float">0.0</n1-actual>
+    <n2-actual type="float">0.0</n2-actual>
+    <state type="int">0</state>
+  </engine>
+  <engine n="1">
+    <fuel-flow-pph type="float">0.0</fuel-flow-pph>
+    <n1-actual type="float">0.0</n1-actual>
+    <n2-actual type="float">0.0</n2-actual>
+    <state type="int">0</state>
+  </engine>
+</engines>
+
+<controls include="Systems/MD-81-init-controls.xml"/>
+
+<systems include="Systems/MD-81-init-systems.xml"/>
+
+<instrumentation include="Systems/MD-81-init-instrumentation.xml"/>
+
+	<input>
+		<keyboard>
+			<key n="10">
+				<name>ctrl-j</name>
+				<desc>Disarm Auto-Spoilers</desc>
+				<binding> 
+					<command>nasal</command>
+					<script>MD83.spoiler_disarm();</script>
+				</binding>
+			</key>
+			<key n="11">
+				<name>ctrl-k</name>
+				<desc>Arm Auto-Spoilers</desc>
+				<binding> 
+					<command>nasal</command>
+					<script>MD83.spoiler_arm();</script>
+				</binding>
+			</key>
+			<key n="106"> 
+				<name>j</name>
+				<desc>Retract Speedbrakes</desc>
+				<binding> 
+					<command>nasal</command>
+					<script>MD83.spoiler_retract();</script>
+				</binding>
+			</key>
+			<key n="107"> 
+				<name>k</name>
+				<desc>Extend Speedbrakes</desc>
+				<binding> 
+					<command>nasal</command>
+					<script>MD83.spoiler_extend();</script>
+				</binding>
+			</key>
+			<key n="127">
+				<name>Delete</name>
+				<desc>Toggle Reversers</desc>
+				<binding>
+					<command>property-toggle</command>
+					<property>controls/engines/engine[0]/reverser</property>
+				</binding>
+				<binding>
+					<command>property-toggle</command>
+					<property>controls/engines/engine[1]/reverser</property>
+				</binding>
+			</key>
+		</keyboard>
+	</input>
+
+
+<nasal>
+	<MD83>
+		<file>Aircraft/MD-80/Nasal/MD-81_fuel.nas</file>
+		<file>Aircraft/MD-80/Nasal/MD-81_electrical.nas</file>
+		<file>Aircraft/MD-80/Nasal/MD-81_pneumatics.nas</file>
+		<file>Aircraft/MD-80/Nasal/MD-81_apu.nas</file>
+		<file>Aircraft/MD-80/Nasal/MD-81_flightsurfaces.nas</file>
+		<file>Aircraft/MD-80/Nasal/MD-81_abs.nas</file>
+		<file>Aircraft/MD-80/Nasal/MD-81_engines.nas</file>
+		<file>Aircraft/MD-80/Nasal/MD-81_instrumentation_drivers.nas</file>
+		<file>Aircraft/MD-80/Nasal/MD-81.nas</file>
+<!--
+    <file>Aircraft/MD-80/Nasal/radar.nas</file>
+    <file>Aircraft/MD-80/Models/Instruments/KLN90B/kln90b.nas</file>
+    <file>Aircraft/MD-80/Nasal/flightdirector.nas</file>
+-->
+  </MD83>
+</nasal>
+
+</PropertyList>
+
+

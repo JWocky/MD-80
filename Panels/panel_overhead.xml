@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+
+<!--
+McDonnell Douglas MD-81
+Gary R. Neely 'Buckaroo', Mar 2010
+-->
+
+
+<PropertyList>
+
+<name>Overhead Panel</name>
+<background>Aircraft/MD-80/Panels/transparent-bg.rgb</background>
+<w>128</w>
+<h>256</h>
+
+<instruments>
+
+  <instrument>
+    <name>panel hotspots</name>
+    <x>64</x>
+    <y>128</y>
+    <w>128</w>
+    <h>256</h>
+    <w-base>128</w-base>
+    <h-base>256</h-base>
+
+    <actions>
+
+<!-- APU group -->
+
+      <action>
+        <name>SW_Battery</name>
+        <button>0</button>
+        <x>-6</x>
+        <y>-64</y>
+        <w>4</w>
+        <h>4</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/battery</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_APU_Master</name>
+        <button>0</button>
+        <x>-9</x>
+        <y>-52</y>
+        <w>5</w>
+        <h>4</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/switches/apu-master</property>
+          <step>1</step>
+          <min>0</min>
+          <max>2</max>
+          <wrap>false</wrap>
+        </binding>
+        <binding> 
+          <command>nasal</command>
+          <script>MD83.apu_switch();</script>
+        </binding>
+      </action>
+      <action>
+        <name>SW_APU_Master</name>
+        <button>1</button>
+        <x>-9</x>
+        <y>-52</y>
+        <w>5</w>
+        <h>4</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/controls/switches/apu-master</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>2</max>
+          <wrap>false</wrap>
+        </binding>
+        <binding> 
+          <command>nasal</command>
+          <script>MD83.apu_switch();</script>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_APU_Air</name>
+        <button>0</button>
+        <x>-6</x>
+        <y>-43</y>
+        <w>4</w>
+        <h>4</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/apu-air</property>
+        </binding>
+        <binding> 
+          <command>nasal</command>
+          <script>MD83.apu_air_switch();</script>
+        </binding>
+      </action>
+
+<!-- Engine group -->
+
+      <action>
+        <name>SW_StartPump</name>
+        <button>0</button>
+        <x>-55</x>
+        <y>-75</y>
+        <w>4</w>
+        <h>5</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/start-pump</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_EngIgn</name>
+        <button>0</button>
+        <x>-49</x>
+        <y>-75</y>
+        <w>4</w>
+        <h>5</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/eng-ign</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_EngStartL</name>
+        <button>0</button>
+        <x>-40</x>
+        <y>-78</y>
+        <w>4</w>
+        <h>4</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/eng-start[0]/position</property>
+        </binding>
+        <binding> 
+          <command>nasal</command>
+          <script>MD83.eng_startup_1(0);</script>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_EngStartR</name>
+        <button>0</button>
+        <x>-35</x>
+        <y>-78</y>
+        <w>4</w>
+        <h>4</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/eng-start[1]/position</property>
+        </binding>
+        <binding> 
+          <command>nasal</command>
+          <script>MD83.eng_startup_1(1);</script>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_PumpLaft</name>
+        <button>0</button>
+        <x>-30</x>
+        <y>-76</y>
+        <w>5</w>
+        <h>5</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/pumpLaft</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_PumpLfwd</name>
+        <button>0</button>
+        <x>-30</x>
+        <y>-85</y>
+        <w>5</w>
+        <h>5</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/pumpLfwd</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_PumpRaft</name>
+        <button>0</button>
+        <x>-10</x>
+        <y>-76</y>
+        <w>5</w>
+        <h>5</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/pumpRaft</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_PumpRfwd</name>
+        <button>0</button>
+        <x>-10</x>
+        <y>-85</y>
+        <w>5</w>
+        <h>5</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/pumpRfwd</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_PumpCaft</name>
+        <button>0</button>
+        <x>-20</x>
+        <y>-76</y>
+        <w>5</w>
+        <h>5</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/pumpCaft</property>
+        </binding>
+      </action>
+
+      <action>
+        <name>SW_PumpCfwd</name>
+        <button>0</button>
+        <x>-20</x>
+        <y>-85</y>
+        <w>5</w>
+        <h>5</h>
+        <binding>
+          <command>property-toggle</command>
+          <property>/controls/switches/pumpCfwd</property>
+        </binding>
+      </action>
+
+    </actions>
+
+  </instrument>
+
+</instruments>
+
+</PropertyList>
+
+

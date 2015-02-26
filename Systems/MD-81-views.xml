@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+
+<!-- MD-81 Views -->
+
+<PropertyList>
+
+  <chase-distance-m type="double" archive="y">-50.0</chase-distance-m>
+
+  <view n="0">
+    <name>Cockpit</name>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <!-- x/y/z = right/up/back ( Blender/FG equivalent: y/z/x) -->
+      <x-offset-m archive="y" type="double">-0.5</x-offset-m>
+      <y-offset-m archive="y" type="double">1.3</y-offset-m>
+      <z-offset-m archive="y" type="double">3.1</z-offset-m>
+      <pitch-offset-deg>-12</pitch-offset-deg>
+      <default-field-of-view-deg type="double">63.0</default-field-of-view-deg>
+      <limits>
+        <enabled type="bool">false</enabled>
+      </limits>
+    </config>
+  </view>
+
+  <view n="1"> <!-- Helicopter view -->
+    <config>
+      <!--<target-z-offset-m archive="y">25</target-z-offset-m>-->
+      <default-field-of-view-deg type="double">52.0</default-field-of-view-deg>
+      <target-z-offset-m archive="y">22</target-z-offset-m>
+      <target-y-offset-m archive="y">0</target-y-offset-m>
+      <pitch-offset-deg>15</pitch-offset-deg>
+    </config>
+  </view>
+
+  <view n="2"> <!-- Chase view -->
+    <config>
+      <default-field-of-view-deg type="double">52.0</default-field-of-view-deg>
+      <target-z-offset-m archive="y">25</target-z-offset-m>
+      <target-y-offset-m archive="y">-3</target-y-offset-m>
+    </config>
+  </view>
+
+  <view n="3"> <!-- Tower view -->
+    <config>
+      <target-z-offset-m archive="y">25</target-z-offset-m>
+      <target-y-offset-m archive="y">25</target-y-offset-m>
+    </config>
+  </view>
+
+  <view n="4"> <!-- Tower view look-from -->
+    <config>
+      <target-z-offset-m archive="y">25</target-z-offset-m>
+      <target-y-offset-m archive="y">0</target-y-offset-m>
+    </config>
+  </view>
+
+  <view n="5">
+    <config>
+     <target-z-offset-m archive="y">50</target-z-offset-m>
+    </config>
+  </view>
+
+  <view n="6">
+    <config>
+     <target-z-offset-m archive="y">50</target-z-offset-m>
+    </config>
+  </view>
+
+  <view n="7"> <!-- Model view -->
+    <config>
+      <default-field-of-view-deg type="double">52.0</default-field-of-view-deg>
+      <target-z-offset-m archive="y">25</target-z-offset-m>
+      <target-y-offset-m archive="y">0</target-y-offset-m>
+    </config>
+  </view>
+
+  <view n="100">
+    <name>Copilot View</name>
+    <enabled type="bool">false</enabled>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <default-field-of-view-deg type="double">66.0</default-field-of-view-deg>
+      <default-pitch-deg type="double">0</default-pitch-deg>
+      <default-heading-deg type="double">0</default-heading-deg>
+      <front-direction-deg type="double">0</front-direction-deg>
+      <front-left-direction-deg type="double">45</front-left-direction-deg>
+      <left-direction-deg type="double">90</left-direction-deg>
+      <back-left-direction-deg type="double">135</back-left-direction-deg>
+      <back-direction-deg type="double">180</back-direction-deg>
+      <back-right-direction-deg type="double">225</back-right-direction-deg>
+      <right-direction-deg type="double">270</right-direction-deg>
+      <front-right-direction-deg type="double">315</front-right-direction-deg>
+      <!-- x/y/z = right/up/back ( Blender/FG equivalent: y/z/x) -->
+      <x-offset-m archive="y" type="double">0.5</x-offset-m>
+      <y-offset-m archive="y" type="double">1.3</y-offset-m>
+      <z-offset-m archive="y" type="double">3.1</z-offset-m>
+      <pitch-offset-deg>-12</pitch-offset-deg>
+      <default-field-of-view-deg type="double">63.0</default-field-of-view-deg>
+      <limits>
+        <enabled type="bool">false</enabled>
+      </limits>
+    </config>
+  </view>
+
+
+  <view n="102">
+    <name>Observer View</name>
+    <enabled type="bool">false</enabled>
+    <type>lookfrom</type>
+    <internal type="bool">true</internal>
+    <config>
+      <from-model type="bool">true</from-model>
+      <from-model-idx type="int">0</from-model-idx>
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <default-field-of-view-deg type="double">66.0</default-field-of-view-deg>
+      <default-pitch-deg type="double">0</default-pitch-deg>
+      <default-heading-deg type="double">0</default-heading-deg>
+      <front-direction-deg type="double">0</front-direction-deg>
+      <front-left-direction-deg type="double">45</front-left-direction-deg>
+      <left-direction-deg type="double">90</left-direction-deg>
+      <back-left-direction-deg type="double">135</back-left-direction-deg>
+      <back-direction-deg type="double">180</back-direction-deg>
+      <back-right-direction-deg type="double">225</back-right-direction-deg>
+      <right-direction-deg type="double">270</right-direction-deg>
+      <front-right-direction-deg type="double">315</front-right-direction-deg>
+      <!-- x/y/z = right/up/back ( Blender/FG equivalent: y/z/x) -->
+      <x-offset-m archive="y" type="double">0</x-offset-m>
+      <y-offset-m archive="y" type="double">1.35</y-offset-m><!-- 930 -->
+      <z-offset-m archive="y" type="double">3.62</z-offset-m>
+      <pitch-offset-deg>-20</pitch-offset-deg>
+      <limits>
+        <enabled type="bool">false</enabled>
+      </limits>
+    </config>
+  </view>
+
+
+</PropertyList>

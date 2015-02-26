@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<adf n="1">
+  <mode>adf</mode>
+  <serviceable type="bool">true</serviceable>
+  <frequencies>
+    <selected-khz type="int">353</selected-khz>  <!-- Pacoima near KBUR -->
+    <standby-khz type="int">373</standby-khz>    <!-- Conda near KJFK -->
+  </frequencies>
+</adf>
+
+<rmi-needle n="0">
+  <mode type="int">0</mode>
+</rmi-needle>
+<rmi-needle n="1">
+  <mode type="int">0</mode>
+</rmi-needle>
+
+<marker-beacon>
+  <test type="int">0</test>
+</marker-beacon>
+
+<altimeter>
+  <DH type="int">0</DH>
+</altimeter>
+
+<nav n="0">
+  <frequencies>
+    <display-sel-khz type="int">0</display-sel-khz>
+    <display-sel-mhz type="int">0</display-sel-mhz>
+    <selected-mhz-fmt type="string">116.30</selected-mhz-fmt>
+    <display-sby-khz type="int">0</display-sby-khz>
+    <display-sby-mhz type="int">0</display-sby-mhz>
+    <standby-mhz-fmt type="string">116.30</standby-mhz-fmt>
+</frequencies>
+</nav>
+<nav n="1">
+  <frequencies>
+    <display-sel-khz type="int">0</display-sel-khz>
+    <display-sel-mhz type="int">0</display-sel-mhz>
+    <selected-mhz-fmt type="string">116.30</selected-mhz-fmt>
+    <display-sby-khz type="int">0</display-sby-khz>
+    <display-sby-mhz type="int">0</display-sby-mhz>
+    <standby-mhz-fmt type="string">116.30</standby-mhz-fmt>
+  </frequencies>
+</nav>
+
+<comm n="0">
+  <frequencies>
+    <display-sel-khz type="int">0</display-sel-khz>
+    <display-sel-mhz type="int">0</display-sel-mhz>
+    <selected-mhz-fmt type="string">122.75</selected-mhz-fmt>
+    <display-sby-khz type="int">0</display-sby-khz>
+    <display-sby-mhz type="int">0</display-sby-mhz>
+    <standby-mhz-fmt type="string">122.75</standby-mhz-fmt>
+</frequencies>
+</comm>
+<comm n="1">
+  <frequencies>
+    <display-sel-khz type="int">0</display-sel-khz>
+    <display-sel-mhz type="int">0</display-sel-mhz>
+    <selected-mhz-fmt type="string">122.75</selected-mhz-fmt>
+    <display-sby-khz type="int">0</display-sby-khz>
+    <display-sby-mhz type="int">0</display-sby-mhz>
+    <standby-mhz-fmt type="string">122.75</standby-mhz-fmt>
+  </frequencies>
+</comm>
+
+<!--
+<radar>
+  <entabled type="int">1</entabled>
+  <minimized type="bool" archive="y">false</minimized>
+  <switch type="string" archive="y">ON</switch>
+  <mode-control type="int" archive="y">2</mode-control>
+  <WXmode  type="string" archive="y">WX</WXmode>
+  <POSmode  type="string" archive="y">POS</POSmode>
+  <DATmode  type="string" archive="y">DAT</DATmode>
+  <display-controls> 
+    <WX type="bool" archive="y">false</WX>
+    <data type="bool" archive="y">false</data>
+    <pos type="bool" archive="y">true</pos>
+  </display-controls>
+  <serviceable type="bool">true</serviceable>
+  <range type="int" archive="y">8</range>
+  <display-mode type="string" archive="y">map</display-mode>
+</radar>
+<wxradar>
+  <range type="int" archive="y">8</range>
+  <minimized type="bool" archive="y">false</minimized>
+  <switch type="string" archive="y">ON</switch>
+  <mode type="string" archive="y">WX</mode>
+  <lightning type="bool" archive="y">false</lightning>
+  <display-mode type="string" archive="y">map</display-mode>
+  <serviceable type="bool" >true</serviceable>
+</wxradar>
+-->
+
+</PropertyList>

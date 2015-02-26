@@ -1,0 +1,864 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<path>fgcp.ac</path>
+
+<animation>
+  <type>material</type>
+  <object-name>FGCP</object-name>
+  <emission>
+    <red>0.8</red>
+    <green>0.4</green>
+    <blue>0.2</blue>
+    <factor-prop>/controls/lighting/panel-norm</factor-prop>
+  </emission>
+</animation>
+<animation>
+  <type>material</type>
+  <object-name>ATDigit1</object-name>
+  <object-name>ATDigit2</object-name>
+  <object-name>ATDigit3</object-name>
+  <object-name>MachDigit1</object-name>
+  <object-name>MachDigit2</object-name>
+  <object-name>Nav1Digit1</object-name>
+  <object-name>Nav1Digit2</object-name>
+  <object-name>Nav1Digit3</object-name>
+  <object-name>Nav1Digit4</object-name>
+  <object-name>Nav1Digit5</object-name>
+  <object-name>Decimal1</object-name>
+  <object-name>Nav2Digit1</object-name>
+  <object-name>Nav2Digit2</object-name>
+  <object-name>Nav2Digit3</object-name>
+  <object-name>Nav2Digit4</object-name>
+  <object-name>Nav2Digit5</object-name>
+  <object-name>Decimal2</object-name>
+  <object-name>Nav1CrsDigit1</object-name>
+  <object-name>Nav1CrsDigit2</object-name>
+  <object-name>Nav1CrsDigit3</object-name>
+  <object-name>Nav2CrsDigit1</object-name>
+  <object-name>Nav2CrsDigit2</object-name>
+  <object-name>Nav2CrsDigit3</object-name>
+  <emission>
+    <red>0.8</red>
+    <green>0.4</green>
+    <blue>0.2</blue>
+    <factor-prop>/controls/lighting/digital-norm</factor-prop>
+  </emission>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>ATDigit1</object-name>
+  <object-name>ATDigit2</object-name>
+  <object-name>ATDigit3</object-name>
+  <object-name>ATKnob</object-name>
+  <condition>
+    <equals>
+      <property>autopilot/locks/at-mode</property>
+      <value>0</value>
+    </equals>
+  </condition>
+</animation>
+<animation>
+  <type>select</type>
+  <object-name>MachDigit1</object-name>
+  <object-name>MachDigit2</object-name>
+  <object-name>ATKnobMach</object-name>
+  <condition>
+    <equals>
+      <property>autopilot/locks/at-mode</property>
+      <value>1</value>
+    </equals>
+  </condition>
+</animation>
+
+<!--  AutoThrottle Digits -->
+
+<animation>
+  <type>textranslate</type>
+  <object-name>ATDigit1</object-name>
+  <property>/autopilot/settings/target-speed-kt</property>
+  <factor>0.001</factor>
+  <step>100</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>ATDigit2</object-name>
+  <property>/autopilot/settings/target-speed-kt</property>
+  <factor>0.01</factor>
+  <step>10</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>ATDigit3</object-name>
+  <property>/autopilot/settings/target-speed-kt</property>
+  <factor>0.1</factor>
+  <step>1</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<!--  Mach digits -->
+
+<animation>
+  <type>textranslate</type>
+  <object-name>MachDigit1</object-name>
+  <property>/autopilot/settings/target-mach</property>
+  <factor>1.0</factor>
+  <step>0.1</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>textranslate</type>
+  <object-name>MachDigit2</object-name>
+  <property>/autopilot/settings/target-mach</property>
+  <factor>10</factor>
+  <step>.01</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<!--  AutoThrottle Switch -->
+
+<animation>
+  <type>select</type>
+  <object-name>ATSwitchOn</object-name>
+  <condition>
+    <property>controls/switches/at</property>
+  </condition>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>ATSwitchOn</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>nasal</command>
+      <script>MD83.autothrottle_toggle();</script>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>select</type>
+  <object-name>ATSwitchOff</object-name>
+  <condition>
+    <not><property>controls/switches/at</property></not>
+  </condition>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>ATSwitchOff</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>nasal</command>
+      <script>MD83.autothrottle_toggle();</script>
+    </binding>
+  </action>
+</animation>
+
+<!--  AutoThrottle Knob (Speed selected) -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>ATKnob</object-name>
+  <property>/autopilot/settings/target-speed-kt</property>
+  <interpolation>
+    <entry><ind>  0</ind><dep>  0</dep></entry>
+    <entry><ind>300</ind><dep>720</dep></entry>
+  </interpolation>
+  <axis>
+    <x1-m>2.498584</x1-m>
+    <y1-m>-0.107</y1-m>
+    <z1-m>1.157239</z1-m>
+    <x2-m>2.488774</x2-m>
+    <y2-m>-0.107</y2-m>
+    <z2-m>1.155154</z2-m>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>ATKnob</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/autopilot/settings/target-speed-kt</property>
+      <step>1</step>
+      <min>0</min>
+      <max>300</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>ATKnob</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/autopilot/settings/target-speed-kt</property>
+      <step>-1</step>
+      <min>0</min>
+      <max>300</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+
+<!--  AutoThrottle Knob (Mach selected) -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>ATKnobMach</object-name>
+  <property>/autopilot/settings/target-mach</property>
+  <interpolation>
+    <entry><ind>   0</ind><dep>  0</dep></entry>
+    <entry><ind>0.82</ind><dep>720</dep></entry>
+  </interpolation>
+  <axis>
+    <x1-m>2.498584</x1-m>
+    <y1-m>-0.107</y1-m>
+    <z1-m>1.157239</z1-m>
+    <x2-m>2.488774</x2-m>
+    <y2-m>-0.107</y2-m>
+    <z2-m>1.155154</z2-m>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>ATKnobMach</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/autopilot/settings/target-mach</property>
+      <step>0.01</step>
+      <min>0</min>
+      <max>0.82</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>ATKnobMach</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/autopilot/settings/target-mach</property>
+      <step>-0.01</step>
+      <min>0</min>
+      <max>0.82</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+
+<!-- Right-side Light Switches -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwACLts</object-name>
+  <property>controls/lighting/beacon</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.483</x-m>
+    <y-m>0</y-m>
+    <z-m>1.170</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>SwACLts</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>nasal</command>
+      <script>MD83.lights_beacon_toggle();</script>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>SwNavLts</object-name>
+  <property>controls/lighting/nav</property>
+  <interpolation>
+    <entry><ind>0</ind><dep> 0</dep></entry>
+    <entry><ind>1</ind><dep>50</dep></entry>
+  </interpolation>   
+  <center>
+    <x-m>2.483</x-m>
+    <y-m>0</y-m>
+    <z-m>1.170</z-m>
+  </center>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation> 
+<animation>
+  <type>pick</type>
+  <object-name>SwNavLts</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>nasal</command>
+      <script>MD83.lights_nav_toggle();</script>
+    </binding>
+  </action>
+</animation>
+
+<!--  Nav1 Digits -->
+
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav1Digit1</object-name>
+  <property>/instrumentation/nav/frequencies/display-sel-mhz</property>
+  <factor>0.001</factor>
+  <step>100</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav1Digit2</object-name>
+  <property>/instrumentation/nav/frequencies/display-sel-mhz</property>
+  <factor>0.01</factor>
+  <step>10</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav1Digit3</object-name>
+  <property>/instrumentation/nav/frequencies/display-sel-mhz</property>
+  <factor>0.1</factor>
+  <step>1</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav1Digit4</object-name>
+  <property>/instrumentation/nav/frequencies/display-sel-khz</property>
+  <factor>0.01</factor>
+  <step>10</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav1Digit5</object-name>
+  <property>/instrumentation/nav/frequencies/display-sel-khz</property>
+  <factor>0.1</factor>
+  <step>1</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<!--  Nav1 Freq Knobs -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>Nav1Knob1</object-name>
+  <property>/instrumentation/nav/frequencies/selected-mhz</property>
+  <interpolation>
+    <entry><ind>108</ind><dep>  0</dep></entry>
+    <entry><ind>118</ind><dep>-360</dep></entry>
+  </interpolation>
+  <axis>
+    <x1-m>2.488774</x1-m>
+    <y1-m>-0.250</y1-m>
+    <z1-m>1.155154</z1-m>
+    <x2-m>2.506381</x2-m>
+    <y2-m>-0.250</y2-m>
+    <z2-m>1.158896</z2-m>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav1Knob1</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav/frequencies/selected-mhz</property>
+      <step>1</step>
+      <min>107.95</min>
+      <max>117.95</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav1Knob1</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav/frequencies/selected-mhz</property>
+      <step>-1</step>
+      <min>107.95</min>
+      <max>117.95</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>rotate</type>
+  <object-name>Nav1Knob2</object-name>
+  <property>/instrumentation/nav/frequencies/selected-mhz</property>
+  <interpolation>
+    <entry><ind>108</ind><dep>  0</dep></entry>
+    <entry><ind>118</ind><dep>3600</dep></entry>
+  </interpolation>
+  <axis>
+    <x1-m>2.488774</x1-m>
+    <y1-m>-0.250</y1-m>
+    <z1-m>1.155154</z1-m>
+    <x2-m>2.506381</x2-m>
+    <y2-m>-0.250</y2-m>
+    <z2-m>1.158896</z2-m>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav1Knob2</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav/frequencies/selected-mhz</property>
+      <step>0.05</step>
+      <min>107.95</min>
+      <max>117.95</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav1Knob2</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav/frequencies/selected-mhz</property>
+      <step>-0.05</step>
+      <min>107.95</min>
+      <max>117.95</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+
+<!--  Nav1 Course Digits -->
+
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav1CrsDigit1</object-name>
+  <property>/instrumentation/nav/radials/selected-deg</property>
+  <factor>0.001</factor>
+  <step>100</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav1CrsDigit2</object-name>
+  <property>/instrumentation/nav/radials/selected-deg</property>
+  <factor>0.01</factor>
+  <step>10</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav1CrsDigit3</object-name>
+  <property>/instrumentation/nav/radials/selected-deg</property>
+  <factor>0.1</factor>
+  <step>1</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<!--  Nav1 CRS Knob -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>Nav1CrsKnob</object-name>
+  <property>/instrumentation/nav/radials/selected-deg</property>
+  <interpolation>
+    <entry><ind>  0</ind><dep>  0</dep></entry>
+    <entry><ind>359</ind><dep>359</dep></entry>
+  </interpolation>
+  <axis>
+    <x1-m>2.498556</x1-m>
+    <y1-m>-0.191</y1-m>
+    <z1-m>1.157233</z1-m>
+    <x2-m>2.488774</x2-m>
+    <y2-m>-0.191</y2-m>
+    <z2-m>1.155154</z2-m>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav1CrsKnob</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav/radials/selected-deg</property>
+      <step>1</step>
+      <min>0</min>
+      <max>360</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav1CrsKnob</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav/radials/selected-deg</property>
+      <step>-1</step>
+      <min>0</min>
+      <max>360</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+
+<!--  Nav2 Digits -->
+
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav2Digit1</object-name>
+  <property>/instrumentation/nav[1]/frequencies/display-sel-mhz</property>
+  <factor>0.001</factor>
+  <step>100</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav2Digit2</object-name>
+  <property>/instrumentation/nav[1]/frequencies/display-sel-mhz</property>
+  <factor>0.01</factor>
+  <step>10</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav2Digit3</object-name>
+  <property>/instrumentation/nav[1]/frequencies/display-sel-mhz</property>
+  <factor>0.1</factor>
+  <step>1</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav2Digit4</object-name>
+  <property>/instrumentation/nav[1]/frequencies/display-sel-khz</property>
+  <factor>0.01</factor>
+  <step>10</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav2Digit5</object-name>
+  <property>/instrumentation/nav[1]/frequencies/display-sel-khz</property>
+  <factor>0.1</factor>
+  <step>1</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<!--  Nav2 Freq Knobs -->
+
+<animation>
+  <type>rotate</type>
+  <object-name>Nav2Knob1</object-name>
+  <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+  <interpolation>
+    <entry><ind>108</ind><dep>  0</dep></entry>
+    <entry><ind>118</ind><dep>-360</dep></entry>
+  </interpolation>
+  <axis>
+    <x1-m>2.488774</x1-m>
+    <y1-m>0.198</y1-m>
+    <z1-m>1.155154</z1-m>
+    <x2-m>2.506381</x2-m>
+    <y2-m>0.198</y2-m>
+    <z2-m>1.158896</z2-m>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav2Knob1</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+      <step>1</step>
+      <min>107.95</min>
+      <max>117.95</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav2Knob1</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+      <step>-1</step>
+      <min>107.95</min>
+      <max>117.95</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>rotate</type>
+  <object-name>Nav2Knob2</object-name>
+  <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+  <interpolation>
+    <entry><ind>108</ind><dep>  0</dep></entry>
+    <entry><ind>118</ind><dep>3600</dep></entry>
+  </interpolation>
+  <axis>
+    <x1-m>2.488774</x1-m>
+    <y1-m>0.198</y1-m>
+    <z1-m>1.155154</z1-m>
+    <x2-m>2.506381</x2-m>
+    <y2-m>0.198</y2-m>
+    <z2-m>1.158896</z2-m>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav2Knob2</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+      <step>0.05</step>
+      <min>107.95</min>
+      <max>117.95</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav2Knob2</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+      <step>-0.05</step>
+      <min>107.95</min>
+      <max>117.95</max>
+      <wrap>true</wrap>
+    </binding>
+  </action>
+</animation>
+
+<!--  Nav2 Course Digits -->
+
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav2CrsDigit1</object-name>
+  <property>/instrumentation/nav[1]/radials/selected-deg</property>
+  <factor>0.001</factor>
+  <step>100</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav2CrsDigit2</object-name>
+  <property>/instrumentation/nav[1]/radials/selected-deg</property>
+  <factor>0.01</factor>
+  <step>10</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+<animation>
+  <type>textranslate</type>
+  <object-name>Nav2CrsDigit3</object-name>
+  <property>/instrumentation/nav[1]/radials/selected-deg</property>
+  <factor>0.1</factor>
+  <step>1</step>
+  <axis>
+    <x>0</x>
+    <y>1</y>
+    <z>0</z>
+  </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Nav2CrsKnob</object-name>
+  <property>/instrumentation/nav[1]/radials/selected-deg</property>
+  <interpolation>
+    <entry><ind>  0</ind><dep>  0</dep></entry>
+    <entry><ind>359</ind><dep>359</dep></entry>
+  </interpolation>
+  <axis>
+    <x1-m>2.499</x1-m>
+    <y1-m>0.256</y1-m>
+    <z1-m>1.157233</z1-m>
+    <x2-m>2.488774</x2-m>
+    <y2-m>0.256</y2-m>
+    <z2-m>1.155154</z2-m>
+  </axis>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav2CrsKnob</object-name>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav[1]/radials/selected-deg</property>
+      <step>1</step>
+      <min>0</min>
+      <max>360</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+<animation>
+  <type>pick</type>
+  <object-name>Nav2CrsKnob</object-name>
+  <action>
+    <button>1</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>property-adjust</command>
+      <property>/instrumentation/nav[1]/radials/selected-deg</property>
+      <step>-1</step>
+      <min>0</min>
+      <max>360</max>
+      <wrap>false</wrap>
+    </binding>
+  </action>
+</animation>
+
+</PropertyList>
+
+

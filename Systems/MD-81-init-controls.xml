@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+<autoflight>
+  <roll-min type="double">-20</roll-min>
+  <roll-max type="double">20</roll-max>
+</autoflight>
+
+<autobrakes>
+  <ABS type="int">0</ABS>
+  <ABS-select type="int">1</ABS-select>
+</autobrakes>
+
+<gear>
+  <brake-parking type="double">1.0</brake-parking>
+</gear>
+
+<engines>
+  <engine n="0">
+    <cutoff type="bool">1</cutoff>
+    <throttle-fdm type="double">0.07</throttle-fdm>
+  </engine>
+  <engine n="1">
+    <cutoff type="bool">1</cutoff>
+    <throttle-fdm type="double">0.07</throttle-fdm>
+  </engine>
+</engines>
+
+<flight>
+  <el-pos-adj type="double">0</el-pos-adj>
+  <spoilers-master type="double">0</spoilers-master>
+  <spoilers-auto type="bool">false</spoilers-auto>
+  <spoilers-auto-ani type="bool">false</spoilers-auto-ani>
+  <spoilers-prearm type="bool">false</spoilers-prearm>
+  <spoilers-lockout type="bool">false</spoilers-lockout>
+  <spoilers-mode type="int">0</spoilers-mode>
+  <spoilers-pos-norm-ground type="double">0</spoilers-pos-norm-ground>
+  <spoilers-pos-norm-flight type="double">0</spoilers-pos-norm-flight>
+  <spoilers-pos-norm-left type="double">0</spoilers-pos-norm-left>
+  <spoilers-pos-norm-right type="double">0</spoilers-pos-norm-right>
+</flight>
+
+<fuel>
+  <lockout-cutoffs type="bool">0</lockout-cutoffs>
+  <xfeed type="bool">0</xfeed>
+	<tank n="0">
+		<pump type="bool">0</pump>
+	</tank>
+	<tank n="1">
+		<pump type="bool">0</pump>
+	</tank>
+	<tank n="2">
+		<pump type="bool">0</pump>
+	</tank>
+	<tank n="3">
+		<pump type="bool">0</pump>
+	</tank>
+	<tank n="4">
+		<pump type="bool">0</pump>
+	</tank>
+</fuel>
+
+<lighting>
+<!--
+  <nav type="bool">false</nav>
+  <wingtipaft type="bool">false</wingtipaft>
+  <landing-left type="bool">false</landing-left>
+  <landing-right type="bool">false</landing-right>
+  <landing-extend-left type="bool">false</landing-extend-left>
+  <landing-extend-right type="bool">false</landing-extend-right>
+  <cabin type="double">0</cabin>
+  <beacon type="bool">false</beacon>
+-->
+  <default type="double">0.5</default>
+  <digital-norm type="double">1.0</digital-norm>
+  <pfd-norm type="double">1.0</pfd-norm>
+  <nd-norm type="double">1.0</nd-norm>
+  <panel-norm type="double">0</panel-norm>
+</lighting>
+
+<switches>
+  <at type="int">0</at> <!-- Whats this for? -->
+  <apu-master type="int">0</apu-master>
+  <apu-air type="int">0</apu-air>
+  <start-pump type="int">0</start-pump>
+  <pumpLaft type="int">0</pumpLaft>
+  <pumpLfwd type="int">0</pumpLfwd>
+  <pumpRaft type="int">0</pumpRaft>
+  <pumpRfwd type="int">0</pumpRfwd>
+  <pumpCaft type="int">0</pumpCaft>
+  <pumpCfwd type="int">0</pumpCfwd>
+  <eng-ign type="int">0</eng-ign>
+  <eng-start n="0" type="int"><position type="int">0</position></eng-start>
+  <eng-start n="1" type="int"><position type="int">0</position></eng-start>
+  <generator n="0"><position type="int">1</position></generator>
+  <generator n="1"><position type="int">1</position></generator>
+  <battery type="int">0</battery>
+  <cart type="int">0</cart>
+  <volts-select-dc type="int">0</volts-select-dc>
+  <volts-select-ac type="int">0</volts-select-ac>
+</switches>
+
+</PropertyList>
+

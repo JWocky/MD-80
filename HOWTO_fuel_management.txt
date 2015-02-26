@@ -1,0 +1,21 @@
+MD-81 Fuel Management
+---------------------
+
+The MD-80 series has three fuel tanks, one in each wing and one in the center fuselage. (The MD-83 has two small auxilliary bladder tanks in the fuselage.) In the equipment menu, the first tank is the left wing tank, the second the right wing tank, and the third is the center tank. Each engine has its own primary pump which is always operational, and the tanks have a number of boost pumps available, subject to operator control.
+
+The engines are capable of suction-feeding using their primary pumps for their power spectrum, requiring no boost pumps for normal operation during cruise flight. The flight manaul recommends more cautious procedures when operating without boost pumps or other low-inlet pressure situations, including greater engine power settings on landing (and using speed brakes to offset the additional power). Standard procedure calls for both boost pumps to remain on for all flight operations. In the simulation, normal operation will not starve the engines, so the boost pumps are required only for engine start-up or for special tank feed situations.
+
+Each fuel tank has two AC boost pumps. The right tank also features an additional DC start pump. These pumps require power on their respective buses. The boost pump switches are located on the overhead panel, to the right of the engine start switches. Fuel priming for engine start-up is accomplished by using one or both of the respective left or right boost pumps, or the start pump if starting the right engine.
+
+If no left or right boost pump is operational, the appropriate annunciator light indicating low fuel inlet pressure will come on. If at least one center tank boost pump is on, these lights should go off, indicating sufficient boost pressure on both lines.
+
+Using the center tank: The left and right boost pumps operate in parallel, so that only one is required to guarantee fuel pressure, but the center tank pumps operate in series to create a higher pressure that will cause the engines to draw from the center tank first if both center pumps are operational. If only one or neither center tank boost pumps are on, fuel will not be drawn from the center tank, but will continue to be drawn from the respective left and right tanks.
+
+Cross-feeding is available on the MD-80 series, but in-flight fuel transfer from one tank to another is not. The crossfeed valve is located on the pedestal drum, to the right and behind the throttles. Because it is somewhat hard to see from the captain's position, the crossfeed valve can be operated using the MD-81 menu. The purpose of cross-feeding in the MD-80's is to address an imbalance of fuel between the left and right tank. If cross-feeding is enabled, the engines will split fuel needs evenly between main tanks (left and right). To draw down fuel on one tank only, turn on the boost pumps of the feeding tank, and turn off the boost pumps of the opposite non-feeding tank. Monitor fuel levels during the procedure, and disable cross-feeding when fuel levels are balanced. Note that the MD-81 is rated to fly with a load imbalance of up to 1500 pounds.
+
+Procedures require that the engines feed from their respective left and right tanks on take-off and landing except when operating in low-fuel situations. Typically center tank pumps should be off, and cross-feeding should be off. Once in flight, procedure calls for the center tank to be emptied first. Cross-feeding is not required to use the center tank and is not normally engaged.
+
+Your MD-81 will draw substantial fuel when idling, roughly equal to the real beast, so monitor your pre-flight times carefully, and consider operating with one engine for extended ground operations. The APU will also draw considerable amounts of fuel when running, especially if it is supplying air to the pneumatic bus, so consider turning it off during cruise.
+
+---
+Gary R. Neely "Buckaroo"

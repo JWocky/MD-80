@@ -1,0 +1,464 @@
+<?xml version="1.0"?>
+
+<!--
+McDonnell Douglas MD-81
+Gary R. Neely 'Buckaroo', Mar 2010
+-->
+
+
+<PropertyList>
+
+<name>Glareshield Panel</name>
+<background>Aircraft/MD-80/Panels/transparent-bg.rgb</background>
+<w>1024</w>
+<h>64</h>
+
+<instruments>
+
+  <instrument>
+    <name>panel hotspots</name>
+    <x>512</x>
+    <y>32</y>
+    <w>1024</w>
+    <h>64</h>
+    <w-base>1024</w-base>
+    <h-base>64</h-base>
+
+    <actions>
+
+<!-- NAV1 Freq Knob -->
+
+      <action>
+        <name>Nav1FreqInc</name>
+        <button>0</button>
+        <x>-347</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav/frequencies/selected-mhz</property>
+          <step>1</step>
+          <min>107.95</min>
+          <max>117.95</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>Nav1FreqDec</name>
+        <button>1</button>
+        <x>-347</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav/frequencies/selected-mhz</property>
+          <step>-1</step>
+          <min>107.95</min>
+          <max>117.95</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>Nav1FreqSmInc</name>
+        <button>0</button>
+        <x>-322</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav/frequencies/selected-mhz</property>
+          <step>0.05</step>
+          <min>107.95</min>
+          <max>117.95</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>Nav1FreqSmDec</name>
+        <button>1</button>
+        <x>-322</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav/frequencies/selected-mhz</property>
+          <step>-0.05</step>
+          <min>107.95</min>
+          <max>117.95</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+
+<!-- NAV1 CRS Knob -->
+
+      <action>
+        <name>Nav1CrsInc</name>
+        <button>0</button>
+        <x>-258</x>
+        <y>-32</y>
+        <w>30</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav/radials/selected-deg</property>
+          <step>1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>Nav1CrsInc</name>
+        <button>1</button>
+        <x>-258</x>
+        <y>-32</y>
+        <w>30</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav/radials/selected-deg</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+
+<!-- NAV2 Freq Knob -->
+
+      <action>
+        <name>Nav2FreqInc</name>
+        <button>0</button>
+        <x>229</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+          <step>1</step>
+          <min>107.95</min>
+          <max>117.95</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>Nav2FreqDec</name>
+        <button>1</button>
+        <x>229</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+          <step>-1</step>
+          <min>107.95</min>
+          <max>117.95</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>Nav2FreqSmInc</name>
+        <button>0</button>
+        <x>254</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+          <step>0.05</step>
+          <min>107.95</min>
+          <max>117.95</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>Nav2FreqSmDec</name>
+        <button>1</button>
+        <x>254</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav[1]/frequencies/selected-mhz</property>
+          <step>-0.05</step>
+          <min>107.95</min>
+          <max>117.95</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+
+
+<!-- NAV2 CRS Knob -->
+
+      <action>
+        <name>Nav2CrsInc</name>
+        <button>0</button>
+        <x>315</x>
+        <y>-32</y>
+        <w>30</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav[1]/radials/selected-deg</property>
+          <step>1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>Nav2CrsInc</name>
+        <button>1</button>
+        <x>315</x>
+        <y>-32</y>
+        <w>30</w>
+        <h>32</h>
+        <binding>
+          <command>property-adjust</command>
+          <property>/instrumentation/nav[1]/radials/selected-deg</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>360</max>
+          <wrap>true</wrap>
+        </binding>
+      </action>
+
+<!-- AutoThrottle Speed Select -->
+
+      <action>
+        <name>SelSpd</name>
+        <button>0</button>
+        <x>-175</x>
+        <y>9</y>
+        <w>20</w>
+        <h>17</h>
+        <binding>
+          <command>property-assign</command>
+          <property>autopilot/locks/at-mode</property>
+          <value>0</value>
+        </binding>
+      </action>
+
+<!-- AutoThrottle Mach Select -->
+
+      <action>
+        <name>SelMach</name>
+        <button>0</button>
+        <x>-175</x>
+        <y>-11</y>
+        <w>20</w>
+        <h>17</h>
+        <binding>
+          <command>property-assign</command>
+          <property>autopilot/locks/at-mode</property>
+          <value>1</value>
+        </binding>
+      </action>
+
+<!-- AutoThrottle Switch -->
+
+      <action>
+        <name>ATSwitch</name>
+        <button>0</button>
+        <x>-110</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>nasal</command>
+          <script>MD83.autothrottle_toggle();</script>
+        </binding>
+      </action>
+
+<!-- AutoThrottle Setting Knob -->
+
+      <action>
+        <name>ATInc</name>
+        <button>0</button>
+        <x>-150</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <condition>
+            <equals>
+              <property>autopilot/locks/at-mode</property>
+              <value>0</value>
+            </equals>
+          </condition>
+          <command>property-adjust</command>
+          <property>/autopilot/settings/target-speed-kt</property>
+          <step>1</step>
+          <min>0</min>
+          <max>300</max>
+          <wrap>false</wrap>
+        </binding>
+        <binding>
+          <condition>
+            <equals>
+              <property>autopilot/locks/at-mode</property>
+              <value>1</value>
+            </equals>
+          </condition>
+          <command>property-adjust</command>
+          <property>/autopilot/settings/target-mach</property>
+          <step>0.01</step>
+          <min>0</min>
+          <max>0.82</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>ATDec</name>
+        <button>1</button>
+        <x>-150</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <condition>
+            <equals>
+              <property>autopilot/locks/at-mode</property>
+              <value>0</value>
+            </equals>
+          </condition>
+          <command>property-adjust</command>
+          <property>/autopilot/settings/target-speed-kt</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>300</max>
+          <wrap>false</wrap>
+        </binding>
+        <binding>
+          <condition>
+            <equals>
+              <property>autopilot/locks/at-mode</property>
+              <value>1</value>
+            </equals>
+          </condition>
+          <command>property-adjust</command>
+          <property>/autopilot/settings/target-mach</property>
+          <step>-0.01</step>
+          <min>0</min>
+          <max>0.82</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+      <action>
+        <name>ATInc</name>
+        <button>3</button>
+        <x>-150</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <condition>
+            <equals>
+              <property>autopilot/locks/at-mode</property>
+              <value>0</value>
+            </equals>
+          </condition>
+          <command>property-adjust</command>
+          <property>/autopilot/settings/target-speed-kt</property>
+          <step>1</step>
+          <min>0</min>
+          <max>300</max>
+          <wrap>false</wrap>
+        </binding>
+        <binding>
+          <condition>
+            <equals>
+              <property>autopilot/locks/at-mode</property>
+              <value>1</value>
+            </equals>
+          </condition>
+          <command>property-adjust</command>
+          <property>/autopilot/settings/target-mach</property>
+          <step>0.01</step>
+          <min>0</min>
+          <max>0.76</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+      <action>
+        <name>ATDec</name>
+        <button>4</button>
+        <x>-150</x>
+        <y>-32</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <condition>
+            <equals>
+              <property>autopilot/locks/at-mode</property>
+              <value>0</value>
+            </equals>
+          </condition>
+          <command>property-adjust</command>
+          <property>/autopilot/settings/target-speed-kt</property>
+          <step>-1</step>
+          <min>0</min>
+          <max>300</max>
+          <wrap>false</wrap>
+        </binding>
+        <binding>
+          <condition>
+            <equals>
+              <property>autopilot/locks/at-mode</property>
+              <value>1</value>
+            </equals>
+          </condition>
+          <command>property-adjust</command>
+          <property>/autopilot/settings/target-mach</property>
+          <step>-0.01</step>
+          <min>0</min>
+          <max>0.76</max>
+          <wrap>false</wrap>
+        </binding>
+      </action>
+
+<!-- Right-side Light Switches -->
+
+      <action>
+        <name>SwACLts</name>
+        <button>0</button>
+        <x>438</x>
+        <y>-8</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>nasal</command>
+          <script>MD83.lights_beacon_toggle();</script>
+        </binding>
+      </action>
+      <action>
+        <name>SwNavLts</name>
+        <button>0</button>
+        <x>467</x>
+        <y>-8</y>
+        <w>25</w>
+        <h>32</h>
+        <binding>
+          <command>nasal</command>
+          <script>MD83.lights_nav_toggle();</script>
+        </binding>
+      </action>
+
+    </actions>
+
+  </instrument>
+
+</instruments>
+
+</PropertyList>
+
+

@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+
+<!-- YASim Aerodynamic Model for the McDonnell Douglas MD-83 -->
+<!-- Gary Neely aka 'Buckaroo' -->
+
+<!--
+Based on MD-81 model with upgraded engines:
+Empty:		77888 lbs
+Zero Fuel:	118000 lbs
+Max Fuel load:	39128 lbs
+Max Payload:	42000 lbs
+Max Take-Off:	160000 lbs
+Max Land:	139500 lbs
+Cruise:		Mach 0.76 @ 35000'
+-->
+
+
+<airplane mass="77888">
+
+
+<!-- Approach configuration -->
+<!--
+These values are selected largely on the basis of meeting minimum stall speeds for various
+weight configurations, based on MD-80 flight tables and lots of trial-and-error. Approach
+AoA really should be 3 degrees, but 4 works better for the FDM solution.
+-->
+<approach speed="135" aoa="4" fuel="0.3">
+  <control-setting axis="/controls/engines/engine[0]/throttle-fdm" value="0.2"/>
+  <control-setting axis="/controls/engines/engine[1]/throttle-fdm" value="0.2"/>
+  <control-setting axis="/controls/flight/flaps" value="1.0"/>
+  <control-setting axis="/controls/flight/slats" value="1.0"/>
+  <control-setting axis="/controls/gear/gear-down" value="1"/>
+  <solve-weight idx="0" weight="360"/>
+  <solve-weight idx="1" weight="30000"/>
+</approach>
+
+<!-- Cruise configuration -->
+<!--
+I use a throttle value of 0.9 based on the 90% maximum continuous setting of the JT8D-219.
+Speed is based on max Mach at FL350 of 0.82.
+-->
+<cruise speed="472" alt="35000" fuel="0.59">
+  <control-setting axis="/controls/engines/engine[0]/throttle-fdm" value="0.9"/>
+  <control-setting axis="/controls/engines/engine[1]/throttle-fdm" value="0.9"/>
+  <control-setting axis="/controls/flight/flaps" value="0.0"/>
+  <control-setting axis="/controls/flight/slats" value="0.0"/>
+  <control-setting axis="/controls/gear/gear-down" value="0"/>
+  <solve-weight idx="0" weight="360"/>
+  <solve-weight idx="1" weight="30000"/>
+</cruise>
+
+
+<!-- Pilot viewpoint --> 
+<cockpit x="-2.9" y="1.5" z="1.2"/>
+
+
+<!-- Fuselage, essentially a nose cone + a body cylinder + a tail cone --> 
+<fuselage ax="0.0" ay="0.0" az="-0.263" bx="-5.087" by="0.0" bz="0.506"
+          width="3.328" taper="0.3" midpoint="1.0" />
+<fuselage ax="-5.087" ay="0.0" az="0.506" bx="-32.160" by="0.0" bz="0.506"
+          width="3.328" taper="1.0" midpoint="0.5" />
+<fuselage ax="-32.160" ay="0.0" az="0.506" bx="-41.889" by="0.0" bz="1.158"
+          width="3.328" taper="0.0" midpoint="0.0" />
+
+<!-- Engine Nacelles, true width of 1.7 halved for a guess at effective drag width -->
+<!-- Left engine -->
+<fuselage ax="-30.845" ay="2.7" az="0.738" bx="-37.246" by="2.7" bz="0.516"
+          width="0.85" taper="0.5" midpoint="0.3" />
+<!-- Right engine -->
+<fuselage ax="-30.845" ay="-2.7" az="0.738" bx="-37.246" by="-2.7" bz="0.516"
+          width="0.85" taper="0.5" midpoint="0.3" />
+
+
+
+<!--
+Airfoils are not accurately modeled; I wasn't able to find profiles, and one source
+indicates they are proprietary. Not that it matters much, but I would have liked
+proper profiles for the model. The profile used is a generic thin semi-symmetrical.
+Update: Airfoils may be DSMA-433A/-434A at root, DSMA-435A/436A at tip.
+
+I would prefer to divide the wing into two sections for inboard and outboard geometry,
+but YASim allows only one 'wing'. I believe a vstab/mstab could be used, but YASim docs say
+it isn't used by the solver computation, so for the moment I leave things simple until
+my understanding improves. My single-geometry solution yields too much wing area and
+too much lift aft. To compensate for the latter, I have the wing artificially placed
+just under 1 meter forward of the actual position (which is not precisely known). The
+position on the model is -23.034. 
+
+Beyond basic geometry, this is guesswork. Some reports have the MD-80's as slightly
+slow to roll, but that is a comparison with the smaller DC-9 which pilots say is very
+responsive on the roll. Also note that though the 80's have a very slight dihedral, they
+are said to be very stable on the roll axis, therefore I've increased the dihedral a bit
+beyond what the model geometry suggests. I have one source that lists the dihedral as
+3 degees, so this guess may be correct.
+
+I'm not happy with the mushy stall characteristics, but in reasonable flight the plane
+shouldn't get near stall conditions anyway. The MD-80's are subject to deep stalls due
+to rear mounted engines and high tail configurations, and have many control and warning
+measures to get the pilots into recovery mode before things get dangerous.
+
+Unused:
+  <control-output control="SPOILER" side="left" prop="/surface-positions/left-spoiler-pos-norm"/>
+  <control-output control="SPOILER" side="right" prop="/surface-positions/right-spoiler-pos-norm"/>
+
+Spoilers without flight/ground mode distinction:
+  <spoiler start="0.078" end="0.554" lift="0.7" drag="2.0"/>
+And with flight/ground mode distinction:
+  <spoiler start="0.078" end="0.554" lift="0.55" drag="3.0"/>
+For flight operation, spoiler control value is cut by 2/3, so in effect we usually see the former
+values, but when on the ground we get the latter, reflecting the setting of ground spoilers. Note
+that flight mode is restricted to 50% full setting, so we in effect we only see have the former
+setting in flight. See spoilers.nas for details.
+
+  <spoiler start="0.078" end="0.554" lift="0.55" drag="3.0"/>
+
+-->
+<wing x="-22.25" y="1.630" z="-0.648" 
+      length="15.632" 
+      chord="6.308" 
+      taper="0.17" 
+      sweep="19" 
+      dihedral="3"
+      incidence="1.5" 
+      camber="0.1"
+      twist="-2.0">
+  <stall aoa="10" width="2" peak="1.5"/>
+  <flap0 start="0" end="0.597" lift="1.5" drag="1.9"/>
+  <flap1 start="0.597" end="0.824" lift="1.25" drag="1.2"/>
+  <slat start="0" end="1" aoa="3" drag="1.1"/>
+  <spoiler start="0.078" end="0.554" lift="0.7" drag="2.0"/>
+  <control-input axis="/controls/flight/flaps" control="FLAP0"/>
+  <control-input axis="/controls/flight/aileron" control="FLAP1" split="true"/>
+  <control-input axis="/controls/flight/slats" control="SLAT"/>
+  <control-input axis="/controls/flight/spoilers" control="SPOILER"/>
+  <control-output control="FLAP0" prop="/surface-positions/flap-pos-norm"/>
+  <control-output control="SLAT" prop="/surface-positions/slat-pos-norm"/>
+  <control-output control="FLAP1" side="left" prop="/surface-positions/left-aileron-pos-norm"/>
+  <control-output control="FLAP1" side="right" prop="/surface-positions/right-aileron-pos-norm"/>
+  <control-output control="SPOILER" prop="/surface-positions/spoiler-pos-norm"/>
+  <control-speed control="FLAP0" transition-time="10"/>
+  <control-speed control="SLAT" transition-time="10"/>
+  <control-speed control="SPOILER" transition-time="1"/>
+</wing>
+
+
+<!--
+-3 dihedral based on several unofficial sources.
+Note that the hstab may have a negative camber. I haven't confirmed this.
+-->
+<hstab x="-41.691" y="0.220" z="5.727"
+	length="6.520" 
+	chord="3.602"
+	taper="0.392"
+	sweep="26.5"
+        dihedral="-3"
+	incidence="0"
+	camber="0">
+  <stall aoa="15" width="4" peak="1.5"/>
+  <flap0 start="0" end="1" lift="1.3" drag="1.3"/>
+  <control-input axis="/controls/flight/elevator" control="FLAP0" />
+  <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
+  <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
+</hstab>
+
+
+<vstab x="-38.578" y="0" z="1.952"
+	length="5.185" 
+	chord="4.507"
+	taper="0.928"
+	sweep="44">
+  <stall aoa="15" width="2" peak="1.5"/>
+  <flap0 start="0" end="0.829" lift="1.4" drag="1.3"/>
+  <control-input axis="/controls/flight/rudder" control="FLAP0" invert="true"/>
+  <control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
+  <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm"/>
+</vstab>
+
+
+<!--
+Early 81's used Pratt & Whitney JT8D-209 18,500 lb (8,391 kg) and were generally considered
+underpowered. Most have been upgraded to the -217 series with 20,000 lb thrust. I use the
+latter as most -209's have been upgraded to -217's. - Buckaroo
+I use -219 for the MD-83 according to Boeing data
+
+Known values for the JT8D-217:
+  mass="4567" egt="625" tsfc="0.518" n1-idle="30" n2-idle="60" n1-max="99.2" n2-max="102.5"
+  (tsfc based on one engine maintenance report for T/O value, tsfc=0.492 at cruise)
+  oil pressure 40-55 PSI
+
+Known values for the JT8D-219:
+  mass="4741" egt="625" tsfc="0.518" n1-idle="30" n2-idle="60" n1-max="99.2" n2-max="102.5"
+  (tsfc based on one engine maintenance report for T/O value, tsfc=0.492 at cruise)
+  oil pressure 40-55 PSI
+
+The JT8D-217 is rated at 20000 lbs (21000 lbs for -219) thrust at sea level and a temperature of 25C. YASim uses a
+standard atmosphere temp of 15C. So, assuming a dewpoint of 0 for atmosphere density calculations,
+that gives 0.0347% more thrust in YASim than indicated by the rating, or 20694 lbs. This may be
+conservative based on new engine data I've not yet fully interpreted.
+Authoritative sources report reversal time to be about 2 secs.
+Note that the JT8D-217 has 850 lbs of reserve thrust which I currently don't factor in as I don't
+know exactly how it's used; is it in addition to rated thrust, or factored into rated thrust? Using
+this with the above factor would give another 880 lbs of thrust per engine (21573), but it seems to
+be available only for emergency situations involving failure of one engine.
+
+FDM throttles are mapped such that the engines idle at 7% rated thrust with throttle controls at the
+full backstop.
+-->
+
+<jet x="-33.757" y="2.7" z="0.687" mass="4741" thrust="21794" egt="625" tsfc="0.518" n1-idle="30" n2-idle="60" n1-max="99.2" n2-max="102.5" epr="2.12">
+  <control-input axis="/controls/engines/engine[0]/throttle-fdm" control="THROTTLE"/>
+  <control-input axis="/controls/engines/engine[0]/reverser" control="REVERSE_THRUST"/>
+  <control-output control="REVERSE_THRUST" prop="/surface-positions/reverser-norm[0]"/>
+  <control-speed control="REVERSE_THRUST" transition-time="2"/>
+<actionpt x="-35.0" y="2.7" z="0.687"/>
+</jet>
+
+<jet x="-33.757" y="-2.7" z="0.687" mass="4741" thrust="21794" egt="625" tsfc="0.518" n1-idle="30" n2-idle="60" n1-max="99.2" n2-max="102.5" epr="2.12">
+  <control-input axis="/controls/engines/engine[1]/throttle-fdm" control="THROTTLE"/>
+  <control-input axis="/controls/engines/engine[1]/reverser" control="REVERSE_THRUST"/>
+  <control-output control="REVERSE_THRUST" prop="/surface-positions/reverser-norm[1]"/>
+  <control-speed control="REVERSE_THRUST" transition-time="2"/>
+<actionpt x="-35.0" y="-2.7" z="0.687"/>
+</jet>
+
+
+<!-- Gear -->
+<!--
+I'm aware that the nose sits a bit too high on the ground, but am unable to resolve the problem without
+compromising either the compression throw or realistic compression behavior under YASim.
+Steering is 27 deg side to side.
+-->
+<!-- Nose -->
+<gear x="-2.476" y="0" z="-2.451"
+	compression="0.38"
+	spring="0.5"
+	damp="4"
+>
+  <control-input axis="/controls/flight/rudder" control="STEER" square="true"/>
+  <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
+  <control-output control="EXTEND" prop="/gear/gear[0]/position-norm"/>
+  <control-speed control="EXTEND" transition-time="10"/>
+</gear>
+
+<!-- Left main -->
+<gear x="-24.5" y="3.112" z="-2.949"
+	compression="0.55"
+	spring="0.35"
+>
+  <control-input axis="/controls/gear/brake-left" control="BRAKE"/>
+  <control-input axis="/controls/gear/brake-parking" control="BRAKE" split="true"/>
+  <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
+  <control-output control="EXTEND" prop="/gear/gear[1]/position-norm"/>
+  <control-speed control="EXTEND" transition-time="10"/>
+</gear>
+
+<!-- Right main -->
+<gear x="-24.5" y="-3.112" z="-2.949"
+	compression="0.55"
+	spring="0.35"
+>
+  <control-input axis="/controls/gear/brake-right" control="BRAKE"/>
+  <control-input axis="/controls/gear/brake-parking" control="BRAKE" split="true"/>
+  <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
+  <control-output control="EXTEND" prop="/gear/gear[2]/position-norm"/>
+  <control-speed control="EXTEND" transition-time="10"/>
+</gear>
+
+
+<!--
+Approximate tank locations. The MD-80's have three tanks, one in each wing and a central
+tank in the fuselage between the wings. The MD-83 adds two small auxillary tanks of about
+500 gallons each just before and aft of the wing section, not used here. Note that the APU
+draws from the right wing tank.
+-->
+<tank x="-22.4" y="5.7" z="-0.465" capacity="9266" jet="true"/>
+<tank x="-22.4" y="-5.7" z="-0.465" capacity="9266" jet="true"/>
+<tank x="-22.4" y="0" z="-0.465" capacity="20596" jet="true"/>
+<tank x="-20.4" y="0" z="-0.465" capacity="8819" jet="true"/>
+<tank x="-24.4" y="0" z="-0.465" capacity="8819" jet="true"/>
+
+<!-- Forward ballast for nose gear, batteries, avionics, etc. -->
+<ballast x="-2.0" y="0.0" z="0.0" mass="7000.0" />
+<!-- Some ballast for mass of main landing gear assemblies -->
+<ballast x="-24.390" y="-2.0" z="-0.658" mass="3000.0" />
+<ballast x="-24.390" y="2.0" z="-0.658" mass="3000.0" />
+
+<weight x="-2.9" y="0.0" z="0.6" mass-prop="/sim/weight[0]/weight-lb"/>		<!-- Crew -->
+<!-- Crude initial positioning of cargo/passengers. Would like to itemize this by location later. -->
+<weight x="-23.0" y="0.0" z="0.0" mass-prop="/sim/weight[1]/weight-lb"/>	<!-- Cargo/Passengers -->
+
+
+</airplane>
